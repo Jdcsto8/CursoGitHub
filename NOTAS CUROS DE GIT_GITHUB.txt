@@ -1,0 +1,1770 @@
+
+
+
+
+pwPARTE I Fundamentos de Git y control de versiones
+
+
+Control de Versiones con Git y GitHub: De Básico a Avanzado
+
+
+
+Resumen
+Imagina guardar un archivo como "versión final", luego "versión final, final" y después "versión final, final, ahora sí". Ese caos, multiplicado por un equipo completo de personas, se convierte rápidamente en un desastre. Para resolver este problema existe Git, un software que ha transformado la forma en que se desarrolla software en todo el mundo.
+
+¿Qué es Git y por qué revolucionó el desarrollo de software?
+
+Git es un software de control de versiones [0:12]. En lugar de guardar copias completas de cada archivo, Git registra únicamente los cambios realizados en cada uno. Esto lo hace extremadamente eficiente. Además, permite coordinar modificaciones entre múltiples personas, facilitando la colaboración en equipo de manera ordenada.
+
+Antes de Git, los desarrolladores gestionaban versiones de archivos de forma manual, un proceso ineficiente y muy propenso a errores [0:30]. Cuando Git apareció, su sencillez provocó una adopción casi inmediata, estableciéndose como el estándar en la industria para programadores y programadoras.
+
+Un dato curioso: el creador de Git es Linus Torvalds [0:50], la misma persona detrás del kernel de Linux. Lo desarrolló para resolver sus propios problemas de control de versión. Git es además open source, lo que significa que cualquier persona puede ver su código fuente e incluso contribuir a sus mejoras [0:58].
+
+¿Por qué aprender Git es fundamental para tu carrera?
+
+Desde el momento en que escribes tu primer "Hola, mundo", necesitas una manera eficiente de gestionar tu código [1:10]. Aprender un control de versiones como Git es clave para tu crecimiento profesional por varias razones:
+
+Te permite colaborar en proyectos con otros developers dentro de una empresa.
+Te ayuda a publicar tu trabajo individual.
+Facilita contribuir a proyectos de terceros.
+En la industria del software, casi ningún producto es creado por una sola persona [1:28]. Siempre se trata de equipos trabajando juntos, y Git es la herramienta que hace posible esa coordinación.
+
+¿Cómo funciona Git en la práctica?
+
+Git opera en tu máquina local a través de la terminal o editores como Visual Studio Code [1:38]. Utiliza comandos específicos como merge, pull, commit, push, entre muchos otros. Cada uno cumple una función dentro del flujo de trabajo para gestionar cambios en el código.
+
+¿Qué papel juega GitHub en este ecosistema?
+
+Cuando quieres colaborar con otras personas, entra en juego GitHub [1:50], una plataforma web donde puedes guardar tu código en la nube junto con sus cambios y cada una de sus versiones. GitHub ha crecido enormemente en los últimos años, incorporando funcionalidades que van mucho más allá de Git y que aumentan la productividad de quienes lo usan.
+
+¿Qué habilidades dominarás con Git y GitHub?
+
+El aprendizaje se divide en dos grandes bloques. Primero, en el ámbito local:
+
+Configurar Git en tu computadora.
+Crear repositorios locales.
+Modificar archivos y registrar cambios.
+Crear ramas y fusionarlas.
+Dominar el flujo de trabajo con Git.
+Después, en el ámbito remoto con GitHub [2:10]:
+
+Crear un repositorio remoto.
+Integrar a otros programadores en tu proyecto.
+Revisar aportes y fusionarlos con tu rama principal.
+Arreglar errores y conflictos.
+Entender un flujo de trabajo profesional.
+Muchas personas dicen saber Git, pero solo conocen lo básico [2:28]. La diferencia está en dominar herramientas avanzadas como ramas, merge, Codespaces, seguimiento de proyectos y automatizaciones que realmente marcan la diferencia en la industria.
+
+Para comenzar, los prerrequisitos son sencillos [2:42]: conocer lo esencial de una terminal (crear directorios, archivos y moverse entre ellos) y tener nociones básicas de cualquier lenguaje de programación. Con eso, ya tienes todo lo necesario para dar el siguiente paso.
+
+------------------------------------
+
+Fundamentos de Git: Configuración y Comandos Básicos 
+
+
+rabajar con Git en la terminal permite a los desarrolladores gestionar sus proyectos de manera eficiente. A continuación, revisamos cómo instalar, configurar y utilizar Git en Linux, Mac y WSL de Windows, junto con algunas recomendaciones prácticas para dominar los comandos iniciales de esta herramienta.
+
+¿Cómo confirmar que Git está instalado en tu sistema?
+
+Para verificar la instalación de Git:
+
+Abre la terminal y escribe el comando git --version.
+Si el comando devuelve un número de versión, Git está listo para usarse.
+Si no aparece la versión, revisa los recursos adjuntos donde se explican las instalaciones para cada sistema operativo.
+¿Cómo crear y preparar el primer proyecto con Git?
+
+El primer paso para crear un proyecto en Git es:
+
+Limpia la terminal para evitar confusión visual.
+Crea una carpeta para el proyecto con mkdir nombre_del_proyecto.
+Navega a la carpeta con cd nombre_del_proyecto.
+¿Cómo inicializar un repositorio en Git?
+
+Al estar dentro de la carpeta de tu proyecto, inicia el repositorio con:
+
+git init: Esto crea la rama inicial “master” por defecto.
+Si prefieres la rama principal como “main”:
+
+Cambia la configuración global escribiendo git config --global init.defaultBranch main.
+Actualiza la rama en el proyecto actual con git branch -m main.
+¿Cómo personalizar tu configuración de usuario en Git?
+
+Configura el nombre de usuario y correo electrónico de Git, que identificará todas tus contribuciones:
+
+Usa git config --global user.name "Tu Nombre o Apodo".
+Configura el correo electrónico con git config --global user.email "tu.email@example.com".
+Tip: Si necesitas corregir algún error en el comando, puedes usar la tecla de flecha hacia arriba para recuperar y editar el último comando escrito.
+
+¿Cómo confirmar la configuración de Git?
+
+Para revisar tu configuración, ejecuta:
+
+git config --list: Aquí verás los datos de usuario y el nombre de la rama principal.
+Esta configuración se aplicará a todos los repositorios que crees en adelante.
+
+¿Qué hacer si olvidas un comando?
+
+Git incluye un recurso rápido y útil para recordar la sintaxis de comandos:
+
+Escribe git help en la terminal.
+Navega la lista de comandos disponibles y consulta la documentación oficial de cada uno cuando sea necesario.
+
+links:
+
+https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Configurando-Git-por-primera-vez
+
+
+
+https://git-scm.com/docs/git-init
+
+
+https://git-scm.com/docs/git-config
+
+
+Curso de Configuración de Entorno de Desarrollo en Windows platzi 
+
+
+----------------------------------
+
+# CLASE 3 CONTROL DE VERSIONES CON GIT: COMANDO BASICOS Y FLUJO DE TRABAJO 
+
+
+Resumen
+Dominar el flujo de trabajo básico de Git es el primer paso para gestionar cualquier proyecto de software con confianza. Aquí se explica cómo crear archivos, pasarlos al área de staging y registrarlos con un commit, todo desde la terminal y con ejemplos prácticos.
+
+¿Qué es la carpeta .git y por qué es importante?
+
+Cuando ejecutas git init en una carpeta, se crea un directorio oculto llamado .git. Para visualizarlo puedes usar el comando ls -a [00:22]. Esta carpeta es el corazón del control de versiones: funciona como una bitácora que almacena un registro detallado de todos los cambios realizados en tus archivos. Sin ella, Git simplemente no existe dentro de tu proyecto.
+
+Una vez inicializado el repositorio, cualquier archivo que crees dentro de esa carpeta puede ser rastreado. Por ejemplo, al escribir nano testing.txt y agregar contenido, ese archivo queda listo para ser gestionado por Git [00:42].
+
+¿Cómo funciona el área de staging en Git?
+
+El área de staging (también llamada stage) es un estado intermedio entre la creación de un archivo y su registro definitivo en el historial. Es un "limbo" donde los archivos esperan a ser confirmados o descartados [01:42].
+
+¿Qué hace git status?
+
+El comando git status muestra el estado actual de tus archivos [01:10]. Indica:
+
+Si estás en la rama main.
+Si hay archivos nuevos, modificados o eliminados.
+Si esos archivos ya fueron agregados al stage o no.
+El cambio de color es el mejor indicativo: los archivos en rojo aún no están en stage, mientras que los verdes ya fueron agregados y esperan un commit [01:30].
+
+¿Cómo agregar y quitar archivos del stage?
+
+Para mover un archivo al área de staging se usa git add seguido del nombre del archivo, por ejemplo git add testing.txt [01:22]. También es posible agregar todos los archivos pendientes de golpe con git add . [03:35].
+
+Si necesitas sacar un archivo del stage y regresarlo a su estado original, el comando es git rm --cached testing.txt [02:52]. Esto no elimina el archivo, solo lo retira del área de preparación.
+
+Este mecanismo te permite decidir qué archivos sí y cuáles no quieres incluir en tu próximo registro de cambios [02:15].
+
+¿Cómo hacer tu primer commit y registrar cambios?
+
+Una vez que los archivos están en stage, el siguiente paso es ejecutar git commit -m "mensaje" [03:55]. El parámetro -m indica que vas a escribir un mensaje descriptivo entre comillas, explicando qué cambios realizaste. Por ejemplo:
+
+bash git commit -m "nuevo archivo de testing"
+
+Al presionar Enter, Git confirma la rama en la que trabajas, el mensaje del commit y un resumen de los cambios: archivos modificados, inserciones y eliminaciones [04:08].
+
+¿Qué pasa cuando modificas un archivo ya registrado?
+
+Si actualizas el contenido de un archivo que ya fue commiteado, al ejecutar git status la leyenda cambia de "creado" a modificado [05:42]. El proceso para registrar esa actualización es exactamente el mismo:
+
+git add . para pasarlo al stage.
+git commit -m "primer archivo modificado" para registrarlo [06:02].
+Git distingue tres estados posibles para un archivo: creado, modificado o eliminado. Independientemente del estado, el flujo siempre sigue la misma secuencia.
+
+¿Cómo verificar el historial de cambios?
+
+El comando git log muestra la bitácora completa de commits realizados [05:12]. Cada entrada incluye el autor, la fecha y el mensaje asociado, lo que facilita rastrear la evolución del proyecto.
+
+Para confirmar que no quedan cambios pendientes, basta con ejecutar git status y verificar que el mensaje indique que el árbol de trabajo está limpio [05:05].
+
+Es importante señalar que este flujo aplica a cualquier tipo de archivo: no importa si son .txt, .php, .go, .js o incluso imágenes. Git los gestiona de la misma forma al hacer add y commit, sin importar la extensión [06:42].
+
+Si ya completaste tu primer commit, comparte en los comentarios qué mensaje le pusiste y cómo te fue con el proceso.
+
+
+links 
+
+https://git-scm.com/docs/git-add
+
+
+https://git-scm.com/docs/git-log
+
+
+https://git-scm.com/docs/git-commit
+
+
+https://docs.github.com/es/get-started/start-your-journey
+
+----------------------------------
+
+Gestión de ramas en Git: creación, fusión y eliminación eficiente
+
+
+Trabajar con ramas en Git es la forma más segura de desarrollar funcionalidades sin afectar el código principal de un proyecto. Cuando dominas este flujo —crear una rama, hacer cambios, fusionar y limpiar— tu productividad y la de tu equipo crecen de manera notable.
+
+¿Qué son las ramas y por qué existen?
+
+Las ramas fueron diseñadas para que cada persona pueda trabajar de manera aislada sin obstaculizar al resto del equipo [0:04]. Si algo sale mal, simplemente eliminas tu rama, vuelves a empezar y retomas el trabajo pendiente. Cada actividad dentro de un proyecto puede vivir en una o varias ramas, lo que brinda flexibilidad total.
+
+¿Cómo saber en qué rama te encuentras?
+
+El comando git branch muestra todas las ramas existentes en tu repositorio local [0:36]. Un asterisco aparece junto a la rama activa, indicando exactamente dónde estás posicionado. Conforme el proyecto crece y las ramas se multiplican, ese asterisco será tu referencia principal.
+
+¿Cómo crear una nueva rama y moverte a ella?
+
+Para crear una rama y cambiar a ella en un solo paso, se utiliza git checkout -b seguido del nombre de la rama [1:03]:
+
+bash git checkout -b admin
+
+Git confirma que te moviste a la nueva rama. Si ejecutas git branch de nuevo, verás que el asterisco ahora apunta a admin mientras que main sigue enlistada sin estar activa [1:16].
+
+¿Cómo trabajar dentro de una rama aislada?
+
+Dentro de la rama recién creada puedes realizar cambios con total libertad. En el ejemplo práctico se crea un archivo con el editor Nano [1:28]:
+
+bash nano testing_admin.txt
+
+Después de guardar el archivo, el flujo habitual continúa:
+
+Ejecutar git status para verificar los cambios pendientes [1:47].
+Agregar los archivos al staging area con git add . [1:58].
+Confirmar los cambios con git commit -m "nuevo archivo creado" [2:04].
+Lo fundamental aquí es que estos cambios solo existen en la rama admin, no en main. Nadie más puede ver lo que acabas de hacer hasta que decidas fusionar [2:14].
+
+¿Qué es fusionar ramas con git merge?
+
+Cuando todos los cambios están listos en tu rama individual, es momento de fusionarlos con la rama principal para que todo el equipo acceda a ellos [2:24]. El proceso requiere dos pasos:
+
+Regresar a la rama principal con git checkout main o git switch main [2:50].
+Ejecutar git merge admin para unificar los cambios [3:10].
+El resultado en la terminal muestra un fast-forward, que es un método de unificación donde Git simplemente avanza el puntero de main hasta el último commit de la rama fusionada [3:18]. En este caso se reporta un archivo cambiado y una nueva inserción.
+
+Un dato útil: git switch es el comando más moderno para cambiar de ramas y cumple exactamente la misma función que git checkout [2:56]. Puedes usar cualquiera de los dos.
+
+¿Por qué eliminar una rama después de fusionarla?
+
+Una vez que la rama cumplió su propósito y sus cambios ya viven en main, la buena práctica es eliminarla [3:55]. El comando para hacerlo es:
+
+bash git branch -D admin
+
+Eliminar ramas evita acumulación innecesaria de nombres como admin, admin1, admin2, que terminan generando confusión y posibles conflictos [4:10]. La regla es clara: una rama existe para un propósito específico y, una vez cumplido, se elimina.
+
+Para confirmar que todo quedó integrado, puedes ejecutar git log y verificar que el commit aparece en el historial de la rama principal [3:38].
+
+Si ya utilizas ramas en tus proyectos o tienes alguna estrategia diferente para organizarlas, comparte tu experiencia en los comentarios.
+
+
+https://git-scm.com/docs/git-branch
+
+
+https://git-scm.com/docs/git-switch
+
+
+https://git-scm.com/docs/git-merge
+
+
+https://git-scm.com/docs/git-checkout
+
+
+
+---------------------------------- 
+----------------------------------
+
+ Git reset vs revert para deshacer commits
+
+
+Cuando empiezas con control de versiones, Git Reset y Git Revert se convierten en tus mejores aliados para deshacer commits sin romper el repositorio. Ambos comandos te ayudan a corregir errores, limpiar el historial y resolver conflictos, pero funcionan de maneras muy distintas y conocer la diferencia te puede ahorrar horas de trabajo perdido.
+
+¿Cuál es la diferencia entre Git Reset y Git Revert?
+
+La distinción es clave antes de tocar tu repositorio. Cada comando responde a una intención diferente, aunque ambos parezcan hacer lo mismo a primera vista.
+
+Git Reset mueve el puntero de tus commits a uno anterior. Esto te permite regresar en el tiempo, explorar el historial e incluso recordar qué hiciste en cada paso. Útil si tienes mala memoria y quieres revisar versiones previas sin perder el rumbo [00:43].
+
+Git Revert, en cambio, es más quirúrgico. Crea un nuevo commit que actúa como tapón y deshace los cambios de un commit específico, sin borrar nada del historial [01:36].
+
+¿Qué hace Git Revert? Crea un nuevo commit que revierte los cambios de uno anterior. El historial se mantiene intacto y puedes ver tanto el commit original como el revert.
+
+¿Cómo uso Git Revert para deshacer un commit?
+
+Imagina que subiste un archivo llamado error.txt que no debería estar en el repositorio. Alguien de tu equipo te avisa y necesitas revertir ese cambio sin afectar el resto del historial.
+
+El flujo es directo:
+
+Ejecuta git log para ver tu historial de commits.
+Identifica el hash del commit que quieres revertir, ese identificador único frente a cada mensaje.
+Copia el hash y ejecuta git revert <hash>.
+Se abre un editor con un mensaje predefinido tipo "Revert nuevo archivo especial creado". Agrega tu firma o nota por camaradería con el equipo.
+Guarda y listo, tu repositorio vuelve al estado anterior [03:50].
+Al correr git log después, verás que revert no elimina el commit original, simplemente añade uno nuevo que neutraliza esos cambios. Si haces ls, el archivo problemático ya no aparece, pero el rastro queda documentado [04:43].
+
+¿Por qué importa el mensaje del commit?
+
+Un buen mensaje hace que tu historial sea legible. Cuando uses git revert, el commit generado describe qué se está deshaciendo y quién lo hizo. Eso facilita auditar decisiones más adelante [03:30].
+
+¿Cómo funciona Git Reset y sus parámetros?
+
+Git Reset es más agresivo. En lugar de crear un commit nuevo, mueve el puntero HEAD a un commit previo y, según el parámetro que uses, también puede borrar archivos y commits posteriores.
+
+Tienes tres modos disponibles:
+
+soft: elimina los archivos pero mantiene los cambios en staging.
+mixed: regresa los commits y deja los cambios sin agregar.
+hard: deshace todos los cambios, archivos y commits posteriores al hash indicado [06:46].
+El flujo práctico se ve así: creas un archivo reset.txt, lo agregas con git add, haces commit con un mensaje claro como "nuevo archivo para reiniciar", y luego decides que quieres volver varios commits atrás. Copias el hash del commit destino y ejecutas:
+
+bash git reset --hard <hash>
+
+Al correr git log después, HEAD y main aparecen ubicados justo donde querías regresar [07:11].
+
+¿Cuándo debo usar git reset hard? Solo como último recurso. Borra archivos, commits y puede afectar el trabajo de tu equipo si el repositorio es compartido.
+
+¿Qué es el HEAD en Git y por qué importa?
+
+Cuando ejecutas git log, ves un paréntesis con la palabra HEAD apuntando a main. Ese puntero indica cuál es el último commit realizado y dónde estás parado en la línea de tiempo del proyecto. Cada vez que haces un nuevo commit, HEAD se mueve automáticamente a esa nueva posición [02:18].
+
+Tanto git reset como git revert manipulan ese puntero, por eso entender HEAD es la base para no perderte al deshacer cambios.
+
+¿En qué casos conviene usar cada comando?
+
+Ambos comandos brillan en tres escenarios concretos:
+
+Corrección de errores: si subiste un archivo que no funciona, git revert es la opción limpia. Si varios compañeros también quieren revertir, evalúa git reset con cuidado.
+Limpieza del historial: cuando el log es demasiado largo y el proyecto ya está sólido, puedes consolidar versiones para navegar más fácil con git log.
+Manejo de conflictos entre ramas: aunque casi siempre los conflictos se resuelven sin reset, en casos extremos puede ser una salida [08:36].
+La recomendación práctica: comunica siempre con tu equipo antes de usar reset, sobre todo con el parámetro hard. Reset y revert no son intercambiables, y elegir mal puede borrar trabajo ajeno.
+
+¿Te ha pasado tener que deshacer un commit en un momento crítico? Cuéntame en los comentarios qué comando usaste y cómo te fue.
+
+links:
+
+
+https://git-scm.com/docs/git-reset
+
+https://git-scm.com/docs/git-revert
+
+
+----------------------------------------------------------------------
+Git Tag y Checkout sin romper tu proyecto
+
+
+
+Etiquetar versiones importantes y revisar commits sin romper tu trabajo son dos tareas que en Git resuelves con Git Tag y Git Checkout. Aquí aprendes cómo usarlos juntos para marcar hitos en tu historial y explorar puntos previos sin afectar la rama principal, ideal si trabajas en equipo y necesitas control de versiones limpio.
+
+¿Para qué sirve Git Tag en el control de versiones?
+
+Git Tag te permite añadir una etiqueta a un commit específico para marcarlo como un hito. Piensa en una versión estable, una release alpha o cualquier punto que tu equipo quiera recordar con facilidad cuando navegue por el historial.
+
+¿Qué es un tag en Git? Es una etiqueta que asocias a un commit para identificarlo con un nombre claro, como v1.0. No altera el historial ni los archivos, solo agrega un marcador visible en Git Log.
+
+La lógica estricta diría que cada commit debería llevar tag, pero eso genera trabajo extra innecesario. Lo común es acordar con tu equipo en qué commits sí tiene sentido etiquetar: lanzamientos, milestones o versiones decimales acordadas.
+
+¿Cómo crear un tag con mensaje?
+
+Para crear una etiqueta anotada usas el comando con el flag -a y agregas un mensaje descriptivo con -m [01:30]:
+
+bash git tag -a v1.0 -m "Mi primera versión"
+
+Después de ejecutarlo, al correr git log verás junto a HEAD -> main la etiqueta v1.0 como un indicador del avance. Es como poner un separador en un libro largo: cuando tengas 100 o 200 commits, navegar entre tags es mucho más cómodo que recorrer todo el historial.
+
+¿Cómo listar y ver detalles de un tag?
+
+Si quieres ver únicamente la lista de etiquetas (no de commits), escribes:
+
+git tag lista todos los tags creados.
+git show v1.0 muestra autor, fecha, mensaje, commit asociado y los cambios realizados en ese commit.
+Esto último es clave porque git show te entrega más información que un commit suelto: qué cambió, quién lo hizo y por qué. En historiales grandes esa narrativa pesa más que el hash.
+
+¿Cómo elimino o corrijo un tag mal nombrado?
+
+Si te equivocaste al nombrar la versión, puedes borrar el tag con el flag -d (delete) [03:45]:
+
+bash git tag -d v1.0
+
+Eliminar una etiqueta no altera commits, archivos ni el historial. Solo retira el marcador. Después puedes crear uno nuevo, por ejemplo git tag v2.0, y verificar con git log que el cambio quedó aplicado. Agregar o quitar etiquetas es una operación segura que no afecta el trabajo del resto del equipo.
+
+¿Cómo uso Git Checkout para explorar commits anteriores?
+
+Git Checkout no solo sirve para alternar entre ramas. También te deja viajar a un commit específico para evaluar cambios sin tocar main. Copias el hash del commit y ejecutas:
+
+bash git checkout <hash>
+
+Al entrar, Git te muestra una leyenda indicando que estás en estado detached HEAD. Si revisas con git log, notarás que HEAD ya no apunta a main con la flechita habitual. Estás ubicado en un punto temporal del historial.
+
+¿Qué significa HEAD detached? Es cuando HEAD apunta a un commit específico en lugar de a una rama. Puedes editar y probar archivos, pero los cambios no afectan a main a menos que crees una rama nueva.
+
+¿Puedo modificar archivos dentro de ese estado temporal?
+
+Sí, y ahí está la magia. Si haces ls verás los archivos tal como existían en ese commit. Puedes crear nuevos, por ejemplo:
+
+Editas con nano testing3.txt y guardas el contenido.
+Verificas con git status que el cambio quedó registrado solo en ese espacio temporal.
+Pruebas qué pasa si tu sistema tiene o no ese archivo.
+Todo ocurre en un sandbox aislado. Es ideal para experimentar sin riesgo de romper el proyecto principal.
+
+¿Cómo regreso a main sin dejar rastro?
+
+Cuando terminas tus pruebas, limpias la terminal y ejecutas [07:20]:
+
+bash git checkout main
+
+HEAD vuelve a apuntar a main y recuperas el estado original del proyecto, incluyendo el tag que ya tenías. Para confirmar que nada se alteró, corres git branch y verificas que no se creó ninguna rama nueva ni hubo modificaciones permanentes.
+
+La ventaja es enorme: regresas a un commit previo, juegas con los archivos, validas hipótesis y, si no funciona, vuelves a la realidad donde todo está en orden. Cero consecuencias en el historial compartido.
+
+¿Ya tienes claro en qué commits de tu proyecto pondrías un tag? Cuéntame en los comentarios cómo organizas las versiones con tu equipo.
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+Cómo resolver conflictos de merge en Git
+
+
+
+
+
+Cuando trabajas en equipo con Git, tarde o temprano dos personas tocarán el mismo archivo y aparecerá un merge conflict. Saber resolver conflictos de ramas en Git es la diferencia entre frenar al equipo o mantener el flujo de trabajo intacto. Aquí verás cómo provocar uno a propósito y solucionarlo línea por línea.
+
+¿Por qué ocurre un conflicto de ramas en Git?
+
+Un conflicto aparece cuando dos ramas modifican la misma porción de un archivo y Git no puede decidir cuál versión conservar. En lugar de elegir por ti, te entrega el control para que tú definas la versión final.
+
+Esto pasa más seguido de lo que parece cuando varias personas trabajan en paralelo sobre el mismo repositorio. La buena noticia: Git marca cada conflicto con señalizaciones claras para que sepas exactamente qué cambió y desde dónde [01:27].
+
+¿Qué es un conflicto en Git? Es una situación en la que dos ramas modifican las mismas líneas de un archivo y Git te pide decidir manualmente cuál cambio se queda en la versión final.
+
+¿Cómo crear un conflicto controlado para practicar?
+
+La mejor forma de aprender a resolver un merge conflict es provocarlo tú mismo. Estos son los pasos que sigo en la terminal para forzar el escenario [01:39]:
+
+Verifica tu rama actual con git branch. Si solo tienes main, perfecto.
+Crea un archivo nuevo con nano conflict.txt y escribe línea original dentro.
+Registra el archivo con git add y git commit -m "archivo de conflicto creado".
+Crea una rama nueva con git checkout -b developer para trabajar en paralelo.
+Edita conflict.txt desde developer, escribe cambios desde la rama dev y haz commit.
+Vuelve a main con git checkout main o git switch main.
+Edita el mismo archivo en main, escribe segundo cambio desde main y haz commit.
+Con esto tienes dos ramas que modificaron el mismo archivo en la misma línea. El terreno está listo para el conflicto.
+
+¿Sirve igual git switch que git checkout?
+
+Sí. Tanto git checkout como git switch te permiten cambiar de rama y hacen exactamente lo mismo en este contexto [03:36]. La diferencia es que git switch es más reciente y está pensado solo para ramas, mientras que git checkout cubre más operaciones.
+
+¿Cómo resolver el conflicto al hacer merge?
+
+Desde main, ejecuta git merge developer. Git intentará fusionar y te avisará que hay un conflicto en conflict.txt. Aquí es donde entra la parte interesante [04:30].
+
+Abre el archivo con nano conflict.txt y verás algo así:
+
+<<<<<<< HEAD segundo cambio desde main
+
+cambios desde la rama dev
+
+developer
+
+La sección marcada con HEAD es el último cambio de tu rama principal. La sección de abajo corresponde a la rama developer. Tu trabajo es decidir qué se queda.
+
+Puedes:
+
+Conservar solo el cambio de main y borrar el bloque de developer.
+Conservar solo el cambio de developer y borrar el bloque de HEAD.
+Combinar ambos en una versión nueva.
+Escribir algo completamente distinto si así lo necesita el proyecto.
+Lo importante: elimina las señalizaciones <<<<<<<, ======= y >>>>>>> antes de guardar. Esas marcas son guías de Git, no parte de tu código.
+
+¿Qué significa HEAD en un conflicto de Git? HEAD apunta al último commit de la rama en la que estás parado. En un merge, indica cuál de los bloques pertenece a tu rama actual.
+
+¿Cómo cerrar el merge y dejar limpio el repositorio?
+
+Después de editar el archivo, guarda los cambios y verifica el estado con git status. Verás el mensaje ambos modificados en conflict.txt, lo que confirma que Git ya detectó tu intervención manual [05:35].
+
+Desde ahí, los pasos finales son directos:
+
+Ejecuta git add conflict.txt para marcar el conflicto como resuelto.
+Haz git commit -m "nuevos cambios" para registrar la fusión.
+Vuelve a correr git merge developer si fuera necesario, o confirma que el merge ya quedó cerrado.
+Con esto, la versión final del documento queda unificada dentro de main.
+
+¿Qué hago con la rama después de resolver el conflicto?
+
+Una vez fusionada, elimina la rama adicional para evitar conflictos posteriores en commits futuros [06:05]. Una rama vieja que sigue viva suele ser fuente de nuevos merge conflicts cuando alguien la retoma sin actualizarla.
+
+Puedes borrarla con git branch -d developer cuando ya esté integrada a main. Así mantienes tu repositorio limpio y tu equipo enfocado solo en las ramas activas.
+
+¿Te ha tocado resolver un conflicto de Git en un proyecto real? Cuéntame en los comentarios cómo lo manejaste y qué estrategia usas con tu equipo para evitar que se repita.
+
+
+links:
+
+https://git-scm.com/docs/git-branch
+
+
+https://git-scm.com/docs/git-merge
+----------------------------------------------------------------------
+Uso de Git en Visual Studio Code
+
+
+Visual Studio Code ofrece una interfaz visual y eficiente para gestionar versiones con Git, simplificando muchas tareas complejas y ahorrando tiempo a los desarrolladores. Integrar VS Code en nuestro flujo de trabajo diario puede facilitar considerablemente el manejo de ramas, commits y conflictos sin depender tanto de comandos en la terminal.
+
+¿Cómo abrir VS Code desde la terminal?
+
+Inicia VS Code en la ubicación del proyecto con code ..
+Esto abre una instancia de VS Code en el directorio actual, incluyendo todos los archivos versionados con Git.
+¿Cómo visualizar y gestionar ramas en VS Code?
+
+Dentro de VS Code, identifica tu rama activa en la sección de control de versiones.
+Selecciona la rama para ver las opciones de cambio, como alternar entre ramas o crear nuevas.
+Los cambios en las ramas se presentan en una gráfica visual, diferenciando fusiones y ramas en colores, una ventaja significativa sobre git log.
+¿Cómo hacer un commit de cambios en VS Code?
+
+Al editar un archivo, el ícono de control de versiones muestra un indicador de cambio.
+En lugar de usar git commit -m "mensaje", puedes simplemente añadir un mensaje y presionar commit en la interfaz de VS Code.
+¿Cómo crear y alternar entre ramas en VS Code?
+
+Haz clic en “Create New Branch” y nómbrala, por ejemplo, “VS Code Dev”.
+VS Code marca esta nueva rama como activa, heredando los cambios de la rama principal.
+Al editar archivos en esta rama, puedes realizar commits directamente en la interfaz.
+¿Cómo resolver conflictos de fusión en VS Code?
+
+Selecciona la rama con la que deseas fusionar (por ejemplo, VS Code Dev con Main) usando el menú de Branch > Merge.
+Cuando ocurre un conflicto, VS Code despliega opciones de resolución con colores para cada cambio, simplificando la selección entre el cambio actual, el entrante o ambos.
+Puedes optar por “Merge Editor” para una vista más visual y confirmar la fusión con un “Complete Merge” al finalizar.
+¿Cómo iniciar un nuevo repositorio en VS Code?
+
+Crea un nuevo directorio y abre VS Code en esa ubicación.
+Al no haber archivos, selecciona “Inicializar repositorio” para configurar un nuevo repositorio.
+Esto ejecuta git init, crea la rama principal (main) y permite añadir nuevas ramas y hacer commits sin usar comandos.
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+INTRODUCCION A GIT HUB 
+
+
+
+# Uso de GitHub para Colaboración y Desarrollo Seguro
+
+
+
+La colaboración en proyectos de software depende de sistemas de control de versiones, y Git es una herramienta central para lograrlo. Usar GitHub, una plataforma en la nube basada en Git, permite que los desarrolladores compartan sus proyectos, trabajen en equipo y accedan a herramientas avanzadas para asegurar y escalar sus desarrollos. Con un enfoque en inteligencia artificial (IA), colaboración, productividad, seguridad y escalabilidad, GitHub ha pasado de ser una red social de programadores a una herramienta integral que optimiza el desarrollo de software moderno.
+
+¿Qué opciones existen para hospedar proyectos en Git?
+
+GitHub: la plataforma más destacada, adquirida por Microsoft en 2018, ofrece amplias herramientas de colaboración y desarrollo.
+Bitbucket (Atlassian), GitLab, Azure DevOps (Microsoft), CodeCommit (Amazon), y Cloud Source (Google): todas permiten el control de versiones en la nube.
+Servidores propios de Git: para quienes prefieren un ambiente privado y controlado.
+¿Cómo ha evolucionado GitHub desde su lanzamiento?
+
+Inicialmente, GitHub era un simple repositorio de código en la nube; sin embargo, ha evolucionado hasta ofrecer una plataforma avanzada que incluye una interfaz web, herramientas de línea de comandos y flujos de trabajo colaborativos. En lugar de limitarse a compartir proyectos, permite a los usuarios colaborar en tiempo real, automatizar tareas y utilizar inteligencia artificial para mejorar la seguridad y productividad del código.
+
+¿Qué funcionalidades destacan en GitHub actualmente?
+
+GitHub ahora integra IA y facilita procesos clave en el desarrollo de software mediante:
+
+Colaboración eficiente: herramientas para trabajo en equipo, seguimiento de cambios y mejoras en el flujo de trabajo.
+Automatización y productividad: automatiza tareas repetitivas, permitiendo a los desarrolladores enfocarse en resolver problemas complejos.
+Seguridad integrada: herramientas avanzadas de seguridad que aseguran el código desde el inicio, minimizando riesgos.
+Escalabilidad: una infraestructura robusta que permite gestionar millones de repositorios y usuarios globalmente.
+¿Qué oportunidades brinda GitHub para los desarrolladores?
+
+Con GitHub, cualquier desarrollador puede contribuir a proyectos relevantes, como mejoras en lenguajes de programación o incluso en el kernel de Linux. Esta capacidad de colaboración global eleva el nivel de la ingeniería de software, fomentando el trabajo en equipo entre profesionales de todo el mundo.
+
+¿Cómo puede ayudarte GitHub en el desarrollo profesional?
+
+Además de ser una herramienta de colaboración y desarrollo, GitHub ofrece la GitHub Foundation Certification, una certificación ideal para validar habilidades en GitHub y dar un primer paso hacia un perfil profesional sólido en desarrollo colaborativo.
+
+
+
+LINKS: https://github.com/
+
+----------------------------------------------------------------------
+
+#Cómo crear y proteger tu cuenta de GitHub
+
+
+
+Crear una cuenta de GitHub es el primer paso para empezar a versionar tu código, colaborar en equipo y construir un perfil profesional como desarrollador. Aquí aprenderás a registrarte, personalizar tu perfil y activar la verificación en dos pasos para proteger tus repositorios.
+
+¿Cómo registrarte en GitHub desde cero?
+
+El registro arranca en github.com, donde encontrarás el botón Sign up en la esquina superior derecha. Al seleccionarlo, GitHub te guía con un mensaje de bienvenida y te pide tres datos básicos para abrir tu cuenta.
+
+Correo electrónico, que puede ser personal o corporativo.
+Contraseña con un nivel de seguridad adecuado.
+Nombre de usuario único, como aminspinoza43, que GitHub valida en tiempo real con un mensaje del tipo «está disponible».
+Después decides si quieres recibir comunicaciones ocasionales sobre productos, completas un captcha visual (puede pedirte identificar dos personas, dos pandas o imágenes sin estrellas) y confirmas tu correo con un código de verificación de 8 dígitos que llega a tu bandeja de entrada [01:32].
+
+¿Necesito pagar para usar GitHub? No. GitHub ofrece una versión gratuita que cubre repositorios públicos y privados para uso individual. La versión Team está pensada para equipos con necesidades adicionales.
+
+¿Qué te pregunta GitHub al iniciar sesión por primera vez?
+
+Al entrar como usuario nuevo, GitHub lanza un breve cuestionario de onboarding para personalizar tu experiencia. Te pregunta qué tipo de perfil tienes (estudiante, profesor o ninguno), cuántas personas trabajan contigo (por ejemplo, de dos a cinco) y qué temas te interesan. Seleccionar todas las opciones disponibles te da una vista más completa desde el inicio.
+
+Finalmente eliges entre cuenta gratuita o cuenta de equipo, y aterrizas en la pantalla principal de tu perfil [03:25].
+
+¿Cómo personalizar tu perfil de GitHub?
+
+Un perfil bien armado funciona como tu carta de presentación frente a reclutadores y colaboradores. Para editarlo, ve a tu foto en la esquina superior derecha y selecciona Settings.
+
+Desde ahí puedes ajustar varios elementos clave:
+
+Nombre real para que sea más reconocible que tu username.
+Correo público que decides mostrar.
+Biografía con una descripción breve sobre ti.
+URL de tu sitio web personal o portafolio.
+Redes sociales asociadas a tu marca personal.
+Empresa actual, que puedes etiquetar con @ si ya tiene perfil en GitHub.
+Foto de perfil, mediante la opción Editar y subiendo una imagen nueva.
+Un detalle que muchos pasan por alto: cada vez que hagas cambios, debes presionar el botón verde Update profile. Si recargas la página sin guardar, perderás todo lo que escribiste [05:18].
+
+¿Por qué activar la verificación en dos pasos en GitHub?
+
+Tu cuenta de GitHub puede contener repositorios privados, código de clientes y proyectos en equipo. Si alguien accede sin autorización, no solo compromete tu trabajo individual, también el de tus compañeros. Por eso la autenticación en dos pasos (2FA) deja de ser opcional y se vuelve esencial.
+
+Una advertencia importante: nunca uses 2FA por SMS. Es el método más vulnerable a ataques de SIM swapping. La recomendación es combinar la app móvil de GitHub con una app de autenticación.
+
+¿Cuál es la mejor app para activar 2FA en GitHub? Puedes usar 1Password, Authy o Microsoft Authenticator. Todas generan códigos temporales (TOTP) que cambian cada 30 segundos y son mucho más seguras que los SMS.
+
+¿Cómo configurar la app móvil de GitHub para autenticarte?
+
+Descarga GitHub Mobile desde la App Store o Google Play, inicia sesión con tu usuario y contraseña, y autoriza tu dispositivo desde la pantalla que aparece dentro de la app. Una vez autorizado, verás tus repositorios y organizaciones disponibles desde el móvil [07:42].
+
+¿Cómo activar la verificación en dos pasos desde la web?
+
+Vuelve a Settings y entra en la sección Password and authentication. Ahí encontrarás dos bloques: passkeys y two-factor authentication. Sigue estos pasos:
+
+Escanea el código QR con tu app de autenticación, por ejemplo Microsoft Authenticator.
+Introduce el código temporal que la app genera para validar la conexión.
+Descarga los códigos de recuperación que GitHub te entrega tras la activación.
+Guárdalos en un lugar seguro: disco duro externo, gestor de contraseñas o nube cifrada.
+Confirma que ya los almacenaste y termina el flujo.
+Los códigos de recuperación son tu salvavidas si pierdes el teléfono o la app de autenticación. Sin ellos, recuperar la cuenta puede ser complicado [09:55].
+
+Una vez activada, GitHub define automáticamente GitHub Mobile como tu método preferido de 2FA, gracias a la sesión que abriste antes. Esta es la configuración recomendada salvo que tu empresa imponga políticas distintas.
+
+Con tu cuenta creada, tu perfil personalizado y la seguridad reforzada, ya tienes la base para empezar a explorar la interacción entre Git y GitHub. Cuéntame en los comentarios qué app de autenticación elegiste y por qué.
+
+
+links 
+
+----------------------------------------------------------------------
+
+
+#Proceso de Trabajo con Git y GitHub: Creación y Revisión de Repositorios
+
+
+
+Para entender cómo Git y GitHub funcionan en conjunto en un flujo de trabajo profesional, debemos recordar que Git es una herramienta de control de versiones basada en comandos, mientras que GitHub facilita su implementación al ofrecer una plataforma que permite manejar proyectos de Git de forma colaborativa y accesible en la nube.
+
+¿Cuál es la relación entre Git y GitHub?
+
+Aunque Git y GitHub son complementarios, no fueron creados por los mismos desarrolladores ni comparten una dependencia directa. Git es el sistema de control de versiones en sí mismo, mientras que GitHub es un servicio que permite alojar repositorios Git en la nube, facilitando el trabajo colaborativo. La única conexión entre ambos es que GitHub permite gestionar proyectos que usan Git para el control de versiones.
+
+¿Cómo se inicia el flujo de trabajo en GitHub?
+
+Para trabajar en un proyecto en GitHub, en lugar de comenzar con git init en tu máquina local, creas un repositorio en GitHub. Este repositorio vacío se descarga al equipo y, desde ahí, se pueden hacer cambios locales. La estructura básica del flujo de trabajo incluye los siguientes pasos:
+
+Crear un commit: Guardar los cambios realizados localmente.
+Subir cambios a GitHub: Una vez los cambios estén listos, se suben a una rama separada en el repositorio remoto.
+¿Por qué es importante trabajar en ramas?
+
+Trabajar en una rama separada permite mantener el código principal estable mientras trabajas en nuevas características. Al subir la rama a GitHub, el proceso de Code Review comienza. Otros compañeros revisarán y aprobarán los cambios antes de integrarlos en la rama principal.
+
+¿Qué reglas se pueden seguir para crear tareas?
+
+Para facilitar la revisión de código y evitar conflictos, es ideal mantener las tareas pequeñas y con un solo objetivo. Esto hace que:
+
+El proceso de revisión sea sencillo.
+Los cambios sean menos propensos a conflictos al integrarse al proyecto principal.
+Algunos equipos imponen reglas como limitar el número de archivos modificados o la cantidad de líneas de código en una tarea, aunque una recomendación básica es “una tarea, un objetivo”.
+
+
+links 
+
+https://docs.github.com/es/get-started/start-your-journey
+
+----------------------------------------------------------------------
+
+Crea y clona tu primer repo en GitHub
+
+
+
+Crear un repositorio en GitHub es el primer paso para llevar tu trabajo con Git al terreno colaborativo. Aprenderás a configurarlo desde cero, invitar colaboradores y clonarlo en tu máquina local para empezar a versionar tu código en equipo.
+
+¿Cómo se crea un nuevo repositorio en GitHub?
+
+Desde la pantalla de inicio de tu perfil, busca el signo de más en la esquina superior derecha y elige New repository. GitHub te abrirá un formulario que reemplaza al clásico git init que usabas en la terminal.
+
+El formulario te pide varios datos antes de generar el repo:
+
+Plantilla o template: opcional, sirve si quieres partir de una estructura predefinida.
+Propietario: selecciona tu usuario o una organización a la que pertenezcas.
+Nombre del repositorio: en el ejemplo se usa miprimerrepo, y como el nombre se combina con tu usuario, queda algo como aminespinoza10/miprimerrepo.
+Descripción: una línea breve que explique de qué trata el proyecto.
+Visibilidad: puedes elegir público o privado según las necesidades del proyecto.
+¿Cuál es la diferencia entre un repositorio público y privado en GitHub? Un repositorio público lo puede ver cualquier persona en internet, ideal para proyectos open source o portafolio. Uno privado solo lo ven tú y los colaboradores que invites, perfecto para código sensible o trabajo interno.
+
+Después vienen tres opciones extra: inicializar con un archivo README, agregar un gitignore y elegir una licencia. El README conviene activarlo desde el inicio para empezar tu documentación, mientras que el gitignore y la licencia puedes dejarlos para después. Pulsa el botón verde Create repository y listo.
+
+¿Cómo invitar a un colaborador a tu repositorio?
+
+Una vez creado el repo, lo primero que verás desplegado es el contenido del README. Para sumar a alguien al proyecto, ve a Settings y entra a la categoría Collaborators.
+
+Ahí selecciona Add people y escribe el usuario que quieras invitar. En el ejemplo se invita a datormx, Miguel Torres. Hay un detalle clave: la persona invitada debe tener cuenta de GitHub y aceptar la invitación antes de poder acceder al repositorio. Mientras la invitación esté pendiente, no se considera colaborador activo.
+
+¿Qué necesita un colaborador para entrar a un repositorio privado? Debe tener una cuenta de GitHub activa y aceptar la invitación que le llega por correo o notificación. Sin esa aceptación, no puede ver ni modificar el repo.
+
+Al refrescar la página después de que Miguel acepta, ya aparece como parte del equipo con permisos de acceso al repositorio.
+
+¿Cómo clonar un repositorio de GitHub a tu máquina local?
+
+Regresa a la pestaña Code, que es la vista principal del repositorio. Ahí notarás que existe una sola rama llamada Main, igual que la rama principal con la que trabajabas en Git desde la terminal. Es lógico que solo exista esa, porque todavía no se ha hecho ningún cambio adicional.
+
+Para llevar el repositorio remoto a tu entorno local, pulsa el botón Code. GitHub te ofrece tres formas de clonar:
+
+HTTPS: la opción más común y directa.
+SSH: requiere configurar llaves, ideal para flujos avanzados.
+GitHub CLI: línea de comandos oficial de GitHub.
+Usa HTTPS y copia la URL que aparece. En tu terminal escribe:
+
+bash git clone https://github.com/tuusuario/miprimerrepo.git
+
+Al presionar Enter verás el mensaje Cloning into 'miprimerrepo' junto con el detalle de los archivos que se descargan. Cuando termine el proceso, ejecuta ls y aparecerá la carpeta del repositorio en tu directorio actual.
+
+¿Qué hace exactamente el comando git clone? Descarga una copia completa del repositorio remoto, incluyendo su historial de commits y ramas, y la convierte en una carpeta local lista para trabajar con Git como cualquier otro proyecto.
+
+Entra a esa carpeta y verás que ya contiene el archivo README que se generó al crear el repositorio en la web. A partir de aquí puedes trabajar localmente con todos los comandos de Git que ya conoces, hacer cambios y luego sincronizarlos de vuelta hacia GitHub. Así es como Git y GitHub se complementan: uno controla las versiones en tu máquina, el otro las aloja en la nube y permite la colaboración real entre desarrolladores.
+
+¿Ya creaste tu primer repositorio? Cuéntanos en los comentarios qué nombre le pusiste y qué proyecto vas a alojar en él.
+
+
+
+
+links: https://github.com/platzi/git-github
+
+
+
+
+----------------------------------------------------------------------
+
+#Precios y Planes de Productos de Github
+
+
+Productos de Github: Precios, planes y apps
+
+
+Ahora que ya vimos como poder crear un repositorio en Github y usar sus repositorios, es momento de hablar acerca de los diferentes productos que veremos durante todo el curso y sus consideraciones, principalmente los costos de cada uno de los servicios que vamos a utilizar.
+
+Recuerda que esta sección es de gran importancia porque como programadores podemos ver todos estos servicios como una variedad de opciones en donde podemos jugar como niños chiquitos en la arena; sin embargo, como parte de alguna organización debemos tener presente que los costos derivados de ello pueden jugar en nuestra contra si no sabemos como hacer para obtener un beneficio de todo esto, ten siempre presente la regla más importante de cualquier servicio que contrates.
+
+Si un servicio o herramienta que estás utilizando no está ayudando a tu organización, entonces la está perjudicando
+
+Bueno, hora de dejar la clase de negocio y comenzar a ver el costo de los diferentes productos.
+
+
+
+Repositorios
+
+Los repositorios de Github ya sean públicos o privados son gratuitos y sin un límite en específico en la cantidad de cuántos puedes tener, es decir, sin importar si se trata de una cuenta de pago o gratuita podrás crear tantos repositorios como gustes, así que por este tema no es necesario preocuparte, esta no es una diferencia entre todos los planes, tanto gratuitos como de pago.
+
+
+
+Codespaces
+
+
+¡Huy! Aquí la cosa se pone buena. Codespaces es una herramienta que vamos a utilizar muchísimo en este curso y que es muy importante tener presente que es de costo. ¿Quieres un adelanto? Te recordaré todo el tiempo jugar con esta herramienta y luego apagarla, pero bueno, es momento de ver los costos.
+
+
+En cuánto a almacenamiento también hay un costo asociado a ello.
+
+
+Lo único que te puedo decir en esta categoría es que esas 30 horas de uso con 4 núcleos van a ser mucho más que suficientes para este curso y jugar un rato más, además, recuerda que cada mes se renuevan estos datos, así que si algo sucede simplemente tocará esperar.
+
+
+
+Github web editor
+
+
+¡Buenas noticias aquí! Al igual que los repositorios, esta característica está presente en todos los planes de todos los niveles, sin costo en ningún escenario y sin límite de uso, esencialmente se trata de una característica que podemos aprovechar y aprender a utilizar mucho si preocuparnos por el costo.
+
+
+Github Actions
+
+
+Github Actions es un tema de lo más complicado, el costo de las Actions depende mucho del sistema operativo, la capacidad del agente, obviamente el hardware y muchas cosas más; sin embargo, para los principiantes (y me incluyo en esta categoría porque ni de broma recuerdo todas las configuraciones) la mejor manera de evaluar y de guiarte es por medio del consumo por minutos, en la siguiente tabla podrás ver una buena referencia de los planes
+
+
+
+La verdad es que hay mucho que considerar en el tema de costos y beneficios de todas las herramientas y lo mejor es que dediques un tiempo a esto para saber como aprovechar al máximo los beneficios aquí solo mencionamos los productos que usaremos en el curso, sin embargo, hay muchas más consideraciones, lo ideal es que comiences por la página de referencia por excelencia para aprender de todo lo necesario acerca de esto, la puedes visitar aquí.
+
+
+
+----------------------------------------------------------------------
+
+# Configuración de SSH en GitHub para Windows, Linux y Mac
+
+
+### OJO HACERLO EN LA PC CON LA WSL DE WINDWOS EN LA TORRE 
+
+
+
+Usar SSH para interactuar con GitHub es una excelente forma de aumentar la seguridad y mejorar la comodidad en el manejo de repositorios. A continuación, te explicamos el paso a paso para generar y configurar tus llaves SSH en distintos sistemas operativos y cómo integrarlas en tu perfil de GitHub para mejorar la experiencia de clonación y autenticación.
+
+¿Por qué es mejor usar SSH en lugar de HTTPS para GitHub?
+
+Seguridad adicional: SSH permite autenticar la computadora específica que accede a los repositorios sin necesidad de ingresar una contraseña cada vez.
+Comodidad: Evita la necesidad de escribir tu contraseña en cada operación con GitHub, agilizando el flujo de trabajo.
+¿Cómo generar una llave SSH en Windows y Linux?
+
+Instalar WSL si estás en Windows (opcional si usas Linux nativo).
+Verificar que no tienes llaves previas: Ve al menú de "Code" en GitHub y verifica que la opción de SSH no tenga llaves configuradas.
+Generar la llave SSH: En la terminal, usa el comando
+
+
+
+ssh-keygen -t ed25519 -C "tu_correo@example.com"
+
+-t ed25519 establece el nivel de encriptación.
+-C añade un comentario con tu correo, útil para identificar la llave en GitHub.
+
+
+Guardar y proteger la llave:
+Usa el nombre por defecto y añade una contraseña segura.
+La llave pública se guarda en el directorio .ssh, generalmente nombrada id_ed25519.pub.
+
+
+Configurar el agente SSH: Activa el agente de SSH y añade la llave privada:
+
+
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+
+
+
+
+¿Cómo añadir la llave SSH a GitHub?
+
+Abrir el archivo de la llave pública (id_ed25519.pub) y copia el contenido.
+En GitHub, ve a Settings > SSH and GPG keys > New SSH key y pega la llave.
+Nombra la llave de acuerdo a la computadora en la que estás configurándola.
+¿Qué pasos adicionales seguir en Mac?
+
+Crear el archivo de configuración SSH: Abre o crea el archivo config dentro del directorio .ssh.
+
+Agregar parámetros específicos de Mac: Añade la configuración para integrar SSH con el sistema Keychain:
+
+
+
+Host github.com
+   AddKeysToAgent yes
+   UseKeychain yes
+   IdentityFile ~/.ssh/id_ed25519
+
+
+
+Añadir la llave al agente SSH con Keychain: Usa el comando:
+
+
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+
+
+
+¿Cómo verificar la conexión con GitHub?
+
+Comprobar autenticación: En la terminal, ejecuta el comando
+
+
+ssh -T git@github.com
+
+
+
+Escribe "yes" para confirmar la conexión.
+Aparecerá un mensaje de GitHub que confirma la autenticidad.
+
+
+
+Cómo clonar un repositorio usando SSH?
+
+En GitHub, selecciona el repositorio deseado, elige la opción de clonación por SSH y copia la URL.
+En la terminal, ejecuta
+
+
+
+git clone git@github.com:usuario/repositorio.git
+
+
+Esto clona el repositorio sin solicitar contraseña, aprovechando la autenticación SSH.
+
+
+
+
+LINKS : 
+
+
+
+https://docs.github.com/es/authentication/connecting-to-github-with-ssh
+
+
+
+----------------------------------------------------------------------
+
+
+#Uso de Forks y Estrellas en Repositorios de GitHub
+
+
+Entender el uso de forks y estrellas en GitHub optimiza la gestión de proyectos y recursos al trabajar en esta plataforma. Aquí exploraremos cómo funcionan estos elementos y cómo pueden ayudarte a organizar tus repositorios en función de tus necesidades.
+
+¿Qué es un fork y cómo se utiliza?
+
+Un fork en GitHub es una copia de un repositorio alojado en la cuenta de otra persona y que puedes transferir a tu propia cuenta. Este proceso crea una réplica del repositorio en su estado actual, sin reflejar futuros cambios del original a menos que se sincronice manualmente. Esto permite:
+
+Trabajar de manera independiente en un proyecto sin afectar el repositorio original.
+Personalizar el contenido según tus necesidades sin modificar el repositorio fuente.
+Crear una base para hacer contribuciones posteriores al repositorio original.
+Para crear un fork, debes abrir el repositorio, seleccionar el botón de Fork y seguir los pasos para copiarlo en tu cuenta. Así, GitHub duplicará el repositorio, manteniendo el nombre y descripción del original. Puedes optar por copiar solo la rama principal (main) o todo el proyecto. Luego, desde tu cuenta, podrás modificar el contenido sin interferir con el repositorio original.
+
+¿Qué beneficios aporta usar estrellas en GitHub?
+
+Las estrellas en GitHub funcionan como un sistema de marcado para resaltar los repositorios que deseas tener a mano como referencia o favoritos. Son útiles para:
+
+Crear un índice de repositorios de referencia o inspiración.
+Acceder rápidamente a recursos clave desde tu perfil.
+Seguir el desarrollo de proyectos importantes para tus intereses.
+Al seleccionar la estrella en un repositorio, ésta se ilumina para indicar que has marcado este recurso. Puedes acceder a todos tus repositorios marcados desde la sección de “tus estrellas” en tu perfil. Aquí se listan los proyectos que has destacado, ayudándote a centralizar tus fuentes de consulta.
+
+¿Cómo clonar un repositorio forkeado?
+
+Después de realizar un fork, puedes clonar este repositorio a tu entorno local para trabajar de forma directa en tu equipo. Para hacerlo:
+
+Ve a tu repositorio forkeado.
+Selecciona el botón Code y copia la URL del proyecto en formato SSH.
+Abre la terminal y usa el comando git clone <URL>.
+
+De esta manera, tendrás una versión local del repositorio en la que podrás modificar y gestionar el código. Esta técnica de fork y clonación es útil para personalizar proyectos o experimentar sin afectar el original, ofreciendo flexibilidad para hacer cambios sin alterar el repositorio fuente.
+
+¿Por qué usar forks en lugar de clonar directamente el repositorio original?
+
+Hacer un fork en lugar de una clonación directa del repositorio original permite que trabajes de manera independiente. Puedes hacer ajustes sin el riesgo de cambiar el repositorio base, especialmente útil cuando el original es de terceros o si planeas realizar cambios extensivos. Además, el fork es una base ideal para hacer contribuciones futuras, ya que se puede sincronizar y enviar cambios al proyecto original a través de un proceso estructurado.
+
+
+links: 
+
+https://docs.github.com/es/authentication/connecting-to-github-with-ssh
+
+
+----------------------------------------------------------------------
+
+
+#Uso de git pull, git push y git fetch en repositorios GitHub
+
+
+
+Resumen
+¿Cómo sincronizar tus repositorios con git pull, git push y git fetch?
+
+La gestión de repositorios es una habilidad esencial en el desarrollo de software moderno. Git y GitHub permiten a los desarrolladores colaborar y sincronizar cambios de manera eficiente. Aquí te explicaremos cómo los comandos git pull, git push y git fetch juegan un papel crucial en este proceso, ayudándote a entender cuándo y cómo utilizarlos para mantener tus repositorios actualizados.
+
+¿Cómo usar git pull y git push para mantener tus repositorios sincronizados?
+
+El comando git pull se utiliza para actualizar tu repositorio local con los cambios que se han producido en la nube, específicamente en GitHub. Esta acción es esencial cuando deseas asegurarte de que tu entorno local refleje las últimas modificaciones realizadas en el repositorio compartido.
+
+Por otro lado, git push tiene la función opuesta: permite subir tus cambios locales al repositorio en la nube. Esto es fundamental para colaborar con otros desarrolladores, garantizando que todos los cambios se integren en el proyecto general.
+
+Script de ejemplo para git pull y git push
+
+
+
+
+
+# Para verificar la rama activa y actualizar el repositorio local
+$ git branch                # Verifica la rama activa
+$ git pull origin main      # Jala los últimos cambios de la rama main en GitHub
+
+# Para subir cambios desde el repositorio local a la nube
+$ git add .                 # Prepara los archivos para el commit
+$ git commit -m "Descripción del cambio" # Realiza el commit
+$ git push origin main      # Sube los cambios a GitHub
+
+
+
+¿Qué es y cómo utilizar git fetch?
+
+El comando git fetch es útil cuando deseas descargar los cambios sin aplicarlos inmediatamente. Difiere de git pull, ya que te permite evaluar primero los cambios antes de fusionarlos con tu rama local. Este enfoque resulta valioso cuando se espera una revisión antes de integrar los cambios en el entorno local.
+
+Ejemplo práctico de git fetch
+
+
+
+
+# Descargar cambios sin aplicarlos de inmediato
+$ git fetch origin                # Jala los cambios de la rama origen
+
+# Comparar y evaluar diferencias entre ramas
+$ git log main..origin/main       # Compara las diferencias entre la rama local y la remota
+
+# Una vez evaluados, fusionar cambios en la rama local
+$ git merge origin/main           # Fusiona los cambios evaluados
+
+
+
+
+
+¿Cómo elegir entre git pull y git fetch?
+
+git pull: Rápido y directo, ideal cuando se confía en los cambios remotos y se necesita una actualización inmediata de la rama local.
+git fetch: Más cauteloso, ofrece una etapa de evaluación antes de integrar los cambios, evitando sincronizaciones no deseadas.
+
+
+
+
+Elige el comando que mejor se adapte a tu situación y flujo de trabajo. Recuerda siempre sincronizar tus cambios entre local y remoto para mantener la integridad del proyecto y facilitar la colaboración.
+
+Con estos comandos como parte de tu arsenal, tendrás la habilidad de mantener tus proyectos bien organizados y listos para la colaboración. Sigue explorando y practicando en diferentes escenarios para reforzar estas habilidades esenciales en el manejo de Git y GitHub. ¡Adelante, y sigue aprendiendo!
+
+
+
+
+links:
+
+https://git-scm.com/docs/git-fetch
+
+
+https://git-scm.com/docs/git-pull
+
+
+
+https://git-scm.com/docs/git-push
+
+
+----------------------------------------------------------------------
+
+#Plantillas de issues en GitHub paso a paso
+
+
+
+
+Resumen
+Los issues en GitHub son la forma más directa de reportar errores, sugerir mejoras o documentar fallos en un repositorio. Si estás aprendiendo control de versiones, dominar esta herramienta te permite colaborar con otros desarrolladores y recibir retroalimentación clara sobre tu código.
+
+Aquí aprenderás a crear un issue desde cero, configurar una plantilla bug report dentro de tu repositorio y entender por qué este flujo mejora la experiencia de quienes quieren contribuir a tu proyecto.
+
+¿Qué es un issue en GitHub y para qué sirve?
+
+Un issue es un mecanismo para señalar defectos o mejoras dentro de un repositorio. Puede tratarse de algo tan pequeño como un acento faltante en la documentación o tan complejo como una falla funcional en el comportamiento esperado del código.
+
+La idea central es comunicarle al autor que existe un problema. A partir de ahí, tú decides si solo reportas el detalle o si además contribuyes con la solución.
+
+¿Qué es un issue en GitHub? Es un reporte público dentro de un repositorio que documenta un error, una mejora o una pregunta. Sirve para que cualquier persona avise al autor sobre algo que no funciona como se espera.
+
+¿Cómo creo un nuevo issue paso a paso?
+
+Dentro de tu repositorio, entra a la pestaña Issues y selecciona el botón de nuevo issue. Aparece un formulario con dos campos esenciales: título y descripción.
+
+En el título escribe algo claro, por ejemplo: no hay más documentos.
+En la descripción detalla qué está pasando y cómo reproducirlo.
+En la columna derecha puedes asignar responsables, agregar etiquetas y otros metadatos opcionales.
+Una vez enviado, verás el contador subir a uno y el hilo queda abierto para conversación pública.
+
+¿Cómo crear una plantilla de issues bug report?
+
+Para facilitarle la vida a quienes reportan errores, GitHub permite crear plantillas. Así, en lugar de una hoja en blanco, tus colaboradores reciben un formulario guiado [01:30].
+
+Abre tu terminal en la carpeta del repositorio y ejecuta el comando code . para abrir Visual Studio Code. Desde ahí trabajarás directamente sobre los archivos.
+
+¿Qué estructura de carpetas necesito?
+
+GitHub espera una convención específica para reconocer las plantillas. Si la estructura no es exacta, no aparecerán al crear un issue.
+
+Crea una carpeta llamada .github (con el punto inicial, esto es obligatorio).
+Dentro de ella, crea otra carpeta en mayúsculas: ISSUE_TEMPLATE.
+Dentro de esa segunda carpeta, crea un archivo llamado bug_report.md.
+La extensión .md corresponde a Markdown, el mismo lenguaje del archivo README. Copia el contenido base desde los recursos de la clase y pégalo dentro del archivo.
+
+¿Por qué la carpeta debe llamarse .github? Porque GitHub busca esa ruta específica para detectar configuraciones especiales como plantillas de issues, pull requests o flujos de automatización.
+
+¿Cómo subo los cambios al repositorio remoto?
+
+Visual Studio Code marca en verde los archivos y carpetas nuevos, indicando que hay cambios pendientes en el control de versiones. Ve a la sección de control de cambios y verás que bug_report aparece listo para registrarse.
+
+Escribe un mensaje de commit, por ejemplo: bug report agregado.
+Confirma el commit.
+Pulsa la flecha hacia arriba para sincronizar con la nube.
+Acepta la ventana que configura los comandos pull y push por primera vez.
+Cuando el botón de commit se inhabilita, la sincronización terminó. Regresa a GitHub, entra a Code y verifica que la carpeta .github/ISSUE_TEMPLATE con el archivo Markdown ya está publicada.
+
+¿Qué cambia para los usuarios después de agregar la plantilla?
+
+Al regresar a la pestaña Issues y seleccionar nuevo issue, tus colaboradores ya no ven una hoja en blanco. Ahora aparece la opción bug report con un botón de inicio.
+
+La plantilla guía al usuario para que llene un título breve, describa el comportamiento esperado, los pasos de reproducción y cualquier dato útil para entender el error. Esto reduce el tiempo que pierdes pidiendo información extra.
+
+La funcionalidad de los issues ya es valiosa por sí sola. Sumarle plantillas eleva la calidad de cada reporte y hace que la colaboración fluya mejor.
+
+¿Qué otras plantillas puedo crear además de bug report?
+
+El mismo flujo sirve para cualquier tipo de reporte que quieras estandarizar dentro de tu repositorio. Algunas ideas prácticas:
+
+Document report: para errores en documentación, typos o secciones poco claras.
+Feature request: para que los usuarios propongan nuevas funcionalidades.
+Mejores prácticas: para sugerencias de optimización o refactorización del código.
+Cada plantilla adicional la creas como un nuevo archivo .md dentro de ISSUE_TEMPLATE. Mientras más opciones ofrezcas, más cómodo será contribuir a tu proyecto y más claridad tendrás tú para mejorar el código que mantienes.
+
+¿Cuál sería la primera plantilla que agregarías a tu repositorio? Cuéntame en los comentarios qué tipo de reportes recibes con más frecuencia.
+
+
+
+LINKS:
+
+https://docs.github.com/es/issues/tracking-your-work-with-issues/learning-about-issues/about-issues
+
+
+
+https://github.com/platzi/git-github
+
+
+
+
+
+----------------------------------------------------------------------
+
+#Uso de Pull Requests en GitHub para Colaboración Efectiva
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+
+
+#Uso de Pull Requests en GitHub para Colaboración Efectiva
+
+
+
+https://github.com/platzi/git-github
+
+
+Resumen
+Colaborar en GitHub requiere evitar modificar directamente la rama principal, lo que podría causar conflictos con el trabajo de otros compañeros. En su lugar, trabajar en ramas individuales y fusionarlas mediante Pull Requests (PR) es clave para un flujo de trabajo colaborativo y seguro.
+
+¿Por qué evitar cambios directos en la rama principal?
+
+Realizar cambios directamente en la rama principal (main) puede sobrescribir el trabajo no sincronizado de otros colaboradores. Este error común se evita al:
+
+Crear una rama separada para cada contribuyente.
+Fusionar cambios mediante una revisión en el Pull Request, antes de unirlos a la rama principal.
+¿Cómo funciona un Pull Request?
+
+Crear una Rama Nueva: Al iniciar cambios, crea una rama local específica. Por ejemplo, developer01.
+Subir la Rama a GitHub: Usa git push -u origin <rama> para subir tu rama.
+Notificar al Equipo: Al crear un Pull Request, notificas al equipo sobre tus cambios, lo que permite una revisión colaborativa (Code Review).
+¿Qué papel juega la revisión de código?
+
+El Code Review en los Pull Requests permite:
+
+Evaluar y comentar los cambios antes de fusionarlos.
+Aumentar la calidad y la visibilidad de los cambios propuestos.
+Aunque puede ser intimidante al principio, esta práctica asegura transparencia y mejora continua en el equipo.
+
+¿Cómo se fusiona un Pull Request?
+
+Comparación y Revisión: Una vez que el equipo revisa los cambios y los aprueba, GitHub facilita la fusión con la rama principal.
+Resolver Conflictos: GitHub verifica automáticamente conflictos potenciales, mostrando una marca verde si está listo para fusionarse sin problemas.
+Eliminar la Rama: Tras la fusión, se elimina la rama para mantener el repositorio ordenado y listo para nuevas tareas.
+¿Cómo puedo practicar Pull Requests de forma efectiva?
+
+Para mejorar, colabora con un amigo o colega, practicando la creación y revisión de Pull Requests. Esta interacción entre ramas te ayudará a familiarizarte y a fluir con confianza en el proceso de colaboración en GitHub.
+
+
+links
+
+
+https://docs.github.com/es/pull-requests/reference/pull-requests
+
+
+https://docs.github.com/es/pull-requests
+
+
+
+----------------------------------------------------------------------
+## HERRAMIENTAS DE COLABORACION  EN GITHUB 
+
+#19 GitHub Projects para gestionar tareas en equipo
+
+
+GitHub Projects es la herramienta de gestión visual dentro de GitHub que te permite planear, asignar y dar seguimiento a tareas vinculadas directamente a tus repositorios. Si trabajas en equipo o como freelance, te ayuda a centralizar actividades sin depender de correos ni mensajes sueltos.
+
+Lo interesante es que dejó de ser solo un repositorio de versiones para convertirse en un espacio colaborativo serio, donde cada issue, rama y pull request se conecta con un tablero que tu equipo puede leer de un vistazo.
+
+¿Qué es GitHub Projects y para qué sirve?
+
+Es un tablero de planeación integrado a tu perfil de GitHub que organiza tus tareas en columnas tipo Kanban: por hacer, en progreso y hechas. Funciona con plantillas listas para distintos flujos de trabajo.
+
+¿Qué es GitHub Projects? Es una herramienta dentro de GitHub que te permite crear tableros de tareas, asignarlas a personas y vincularlas con issues y repositorios para coordinar el trabajo en equipo.
+
+Para crearlo, entra a tu perfil, selecciona la pestaña Projects y haz clic en New Project. GitHub te ofrece plantillas como lanzamiento de características, Kanban, seguimiento de bugs y la que se usa en este flujo: Team Planning.
+
+¿Cómo creo mi primera tarea en el tablero?
+
+Una vez dentro del proyecto, basta con dar clic en + dentro de la columna de tareas por hacer y escribir el nombre. Por ejemplo: Actualizar mi proyecto HTML. Al presionar enter, queda registrada como un ítem nuevo.
+
+Desde ahí puedes abrir la tarea y completar campos clave para que tu equipo entienda el alcance:
+
+Estatus de la actividad (por hacer, en progreso, hecho).
+Tamaño estimado, usando t-shirt sizes o cartas de póquer del marco ágil.
+Estimación en horas para esa tarea.
+Fechas de inicio y fin.
+Persona asignada.
+Entre más información agregues, mejor podrá medir tu equipo qué se entrega en cada iteración.
+
+¿Cómo se administra la capacidad del equipo en Team Planning?
+
+La pestaña Team Capacity muestra a todos los colaboradores que sumas al proyecto y la carga de trabajo de cada uno. Ahí defines prioridades y revisas si alguien está saturado antes de asignar más tareas.
+
+Cuando seleccionas a un miembro asignado, ves todas las actividades que tiene en esa iteración. Esto evita que dos personas trabajen lo mismo y te da una foto rápida del avance.
+
+¿Por qué aparece la etiqueta Draft en mis tareas?
+
+Cuando creas una tarea directo en el tablero, aparece como Draft. Eso significa que aún no está vinculada a ningún repositorio. Sabes que hay que hacerla, pero no en cuál proyecto del código.
+
+Para conectarla, abre los tres puntitos de la actividad y elige Convert to issue. GitHub te muestra tus repositorios recientes y, al elegir uno, el círculo se vuelve verde indicando que la tarea ya es un issue real dentro de ese repo.
+
+¿Cuál es la diferencia entre un draft y un issue? Un draft es una tarea solo visible en el tablero. Un issue es una tarea vinculada a un repositorio, con número identificador, comentarios y posibilidad de crear ramas y pull requests.
+
+¿Cómo vinculo issues con ramas y pull requests?
+
+Al convertir el draft en issue, GitHub asigna un número identificador, por ejemplo el 3. Ese número es oro para nombrar tu rama: una convención muy útil es llamarla amin/3, donde amin es tu usuario y 3 es el número del issue.
+
+Esta práctica permite que cualquier persona del equipo entienda en qué actividad estás trabajando con solo leer el nombre de la rama. Y cierra el ciclo entre planeación y código.
+
+En la vista del issue, dentro de la categoría Development, puedes crear la rama directamente desde la interfaz. Eliges el nombre, GitHub la genera y luego la traes a tu entorno local para empezar a trabajar tus cambios.
+
+¿Cómo veo solo mis tareas y no las del resto?
+
+Cuando el tablero crece con muchas actividades de varias personas, la pestaña My Items filtra únicamente lo que está asignado a ti. Así te enfocas sin distraerte con lo que hace el resto del equipo.
+
+Esto es especialmente útil si no eres el dev lead. A ti te interesa entregar tu parte; el liderazgo técnico se encarga de la vista global.
+
+¿Por qué Projects funciona con múltiples repositorios a la vez?
+
+Un mismo proyecto puede agrupar issues de varios repositorios. Si entras a un issue y revisas la categoría Projects, verás a qué tableros pertenece. Esto significa que puedes gestionar tu trabajo personal aunque esté repartido en distintos repos.
+
+Para freelancers, esta característica es ideal porque consolidas clientes y proyectos en un solo lugar. Para equipos en una compañía, lo común es enfocarte en un repositorio principal, pero puedes mantener tableros paralelos para iniciativas individuales.
+
+¿Cómo aprendo a estimar mejor mis tareas?
+
+La estimación es una de las habilidades más valiosas para quienes desarrollan software en equipo. Al principio todos fallamos: asignas tres horas y tardas diez, o asignas diez y terminas en tres. Es normal.
+
+La recomendación es practicar dentro de Projects, registrando tiempo estimado y comparándolo con el real. Con el tiempo aprendes a no interrumpir el trabajo de tus compañeros porque entregas cuando dijiste que ibas a entregar.
+
+Usa Projects para ejercitar esa estimación, mide tu energía y empieza a notar patrones en tu propio ritmo de trabajo. ¿Tú cómo estimas tus tareas hoy? Cuéntalo en los comentarios.
+
+
+links 
+
+https://docs.github.com/es/issues/planning-and-tracking-with-projects/learning-about-projects/about-projects
+
+
+https://github.com/platzi/git-github
+
+
+----------------------------------------------------------------------
+
+#20  Automatiza GitHub Projects con workflows
+
+
+Si quieres acelerar tu flujo de trabajo en GitHub sin perder tiempo en burocracia, automatizar GitHub Projects te permite vincular issues, pull requests y cambios de estado para que todo avance solo mientras tú te concentras en escribir código. Esta guía te muestra cómo hacerlo paso a paso, ideal para quienes gestionan proyectos de software en equipo.
+
+¿Cómo vincular un proyecto a tu repositorio en GitHub?
+
+Dentro de tu repositorio, la pestaña Projects aparece vacía hasta que enlazas uno. Antes de hacerlo, conviene renombrar el proyecto desde tu perfil para evitar nombres genéricos como project sin título.
+
+Ve a tu perfil y abre la sección de Projects.
+Selecciona el icono de editar y asigna un nombre, por ejemplo mi proyecto individual.
+Agrega una descripción y un README que explique las actividades principales.
+Guarda los cambios con el botón superior y regresa al repositorio.
+De vuelta en el repositorio, usa la opción link a project y elige el nombre correcto. Cuando aparezca la palomita, tu proyecto queda vinculado y puedes empezar a sumar tareas.
+
+¿Cómo creo y organizo actividades dentro del proyecto?
+
+Desde el proyecto vinculado puedes capturar tareas como actualizar mi proyecto HTML, actualizar archivo CSS y actualizar archivo JavaScript. Cada una se mueve entre tres estados: todo, in progress y done. Esa columna es la base sobre la que después se construyen métricas y automatizaciones.
+
+¿Para qué sirve GitHub Projects? Es un tablero integrado a tu repositorio que organiza issues y pull requests por estado, responsable y prioridad, para que veas el avance real del proyecto sin salir de GitHub.
+
+¿Cómo medir el desempeño con la sección Insights?
+
+En la esquina superior derecha del proyecto está insights, donde aparece una gráfica de status con cuántas actividades están pendientes, en progreso y terminadas. Esto te ayuda a ver el ritmo del equipo y a identificar a quienes se olvidan de mover sus tarjetas.
+
+Y aquí viene lo interesante: en lugar de pedirle a tu equipo que actualice manualmente cada tarjeta, puedes dejar que GitHub lo haga por ti vía workflows.
+
+¿Cómo configurar workflows automáticos en GitHub Projects?
+
+Desde los tres puntos del proyecto entras a la categoría de workflows, donde GitHub lista las acciones que disparan cambios de estado automáticos [02:30].
+
+Item closed: cuando cierras un issue o pull request, la tarjeta pasa a done automáticamente.
+Code review approved: al aprobar un pull request, puedes mover la tarea a done sin tocar el tablero.
+Cada flujo se edita con el botón verde save para habilitarlo o cambiar el estado destino.
+Con estos flujos activos, tu tablero se actualiza solo cada vez que cierras trabajo en el repositorio.
+
+¿Cómo conectar un issue con un pull request usando closes?
+
+La palabra clave para cerrar issues automáticamente es closes. El flujo completo se ve así:
+
+En tu actividad del proyecto, selecciona los tres puntos y elige convert to issue, asociándolo al repositorio.
+Crea una nueva rama, por ejemplo amin/17, desde la sección de branches.
+Agrega tu archivo, como style.css, con un comentario inicial y haz commit en esa rama.
+Abre el pull request y en la descripción escribe: Agregué el archivo CSS. Closes #17.
+Al hacer esto, GitHub vincula el pull request con el issue y lo muestra en la sección development. Cuando el pull request se fusiona, el issue se cierra y la tarjeta del proyecto pasa de in progress a done sin intervención manual [05:40].
+
+¿Qué hace la palabra closes en un pull request? Crea un enlace directo entre el pull request y un issue. Al fusionar el pull request, GitHub cierra automáticamente el issue referenciado con closes #número.
+
+¿Qué pasa después de fusionar el pull request?
+
+Una vez que tu compañero revisa y aprueba el pull request, GitHub lo fusiona, te ofrece eliminar la rama y muestra el issue como cerrado en development. Al volver a projects, la actividad ya aparece en done. Todo el ciclo, desde escribir código hasta actualizar el tablero, queda automatizado.
+
+Vale la pena recordar que aunque aquí todo se hizo desde la web por fines didácticos, en un escenario real harás la creación de ramas, los commits y los pull requests desde la terminal o VS Code, que son las herramientas estándar del día a día.
+
+¿Hasta dónde puedes expandir los workflows de GitHub?
+
+Los workflows son apenas el primer escalón. Existen extensiones que disparan notificaciones cuando un pull request se cierra y avisan al equipo por:
+
+Slack, con mensajes en el canal del proyecto.
+Microsoft Teams, integrando alertas en tus chats de trabajo.
+Correo electrónico, para notificar a stakeholders externos.
+Con estas integraciones, tu tablero deja de ser un registro pasivo y se convierte en el centro de comunicación del equipo. Cuéntame en los comentarios qué tarea repetitiva te gustaría automatizar primero en tu repositorio.
+
+
+
+links 
+
+https://github.com/features/issues
+
+
+https://docs.github.com/en/issues/planning-and-tracking-with-projects
+----------------------------------------------------------------------
+
+
+#21 Recursos Esenciales de Markdown para Documentación Efectiva
+
+Herramientas útiles para documentación con Markdown
+
+
+
+En las clases anteriores has visto la relevancia de trabajar con Markdown y lo mucho que este lenguaje te puede ayudar para crear una gran documentación. En esta clase lo que veremos son algunos de los muchísimos recursos que puedes utilizar para poder escribir de una gran manera utilizando Markdown de la mejor manera posible. ¡Comencemos!
+
+
+
+links https://www.markdownguide.org/
+
+
+Simplemente, la mejor referencia para conocer todo lo que se puede hacer con Markdown dentro de los documentos, aquí puedes comenzar a leer mucho.
+
+
+Mi primera sugerencia es irte a la opción de Cheat Sheet, en esta sección podrás encontrar todo lo que puedes hacer, desde la sintaxis básica hasta la extendida. Lo mejor que puedes hacer comenzar a practicar aquí con esto, la verdad es que si sabes usar estas características ya estás dominando el 90% de todo el trabajo.
+
+También considera que Markdown es compatible con algunas funciones de html como </img>, lo que te permitiría jugar un poco más con el diseño de tu documento.
+
+Si tienes un poco más de tiempo libre estaría fenomenal visitar la sección de Get Started en donde el sitio explica como funciona Markdown lo que es una lectura muy buena para aprender un poco más. ¡Dale un vistazo!
+
+link: https://www.markdownguide.org/cheat-sheet/
+
+
+
+Extensión de Markdown para VS Code
+
+
+Ya que conoces lo que Markdown puede hacer y su sintaxis lo mejor que puedes hacer es instalar la extensión de Markdown dentro de VS Code, esto te puede llevar a un nivel mucho más avanzado de documentación porque te puede ayudar con la estructura del proyecto mostrándote las reglas que es recomendable no dejar en el documento.
+
+Puedes encontrar el enlace de la extensión aquí.
+
+Dentro de VS Code la imagen es como la siguiente:
+
+
+ver imagen markdown1 
+
+
+Una vez que lo hayas instalado entonces es momento de ponerla en prueba y para ello debes simplemente cometer un par de errores al momento de escribir tu documento. Yo lo hice con este que ahora estás leyendo. Podrás ver las líneas amarillas en cada línea por corregir.
+
+
+ver imagen markdown2
+
+¿Quieres lo mejor? Solo basta que te coloques encima de las líneas para que puedas conocer el error que puedes corregir.
+
+ver imagen markdown3
+
+
+Solo es cosa de que veas la regla y la modifiques, te debo confesar que esta extensión me ha hecho aprender a redactar de manera más eficiente mis documentos. ¡Me encantaría recordar quién me la enseñó para poder agradecerle por el gran tip!
+
+Previsualización de Markdown
+
+Dentro de VS Code puedes previsualizar todos los documentos markdown antes de colocarlos en un control de versiones, solo es necesario que te ubiques en la esquina superior derecha para encontrar un ícono con una lupa y que te permite previsualizar el documento.
+
+ver imagen markdown4
+
+Al hacerlo podrás ver una división entre el documento que estás editando y su presentación final dándote no solo una vista previa, sino que también podrá mostrar cualquier error como una ruta de imágenes mal direccionada o cosas por el estilo.
+
+ver imagen markdown5
+
+Usar esta vista es un recurso que puedes utilizar para muchas opciones, como evitar un commit que repare los errores de uno anterior. Lo importante es que si usas el monitor de una laptop podrá ser un poco complicado y es aquí donde podrás ansiar tener un monitor ultra wide para trabajar con total felicidad (¡yo quiero uno de esos!).
+
+
+Diagramas Mermaid
+
+
+Dejando de lado la funcionalidad básica de lo que puedes hacer con los markdown y VS Code podemos dar un paso adelante y utilizar una herramienta que te hará hacer documentos de otro nivel con los diagramas mermaid.
+
+Estos diagramas te permiten diseñar gráficas de muchos niveles y personalizarlas con la complejidad que deseas.
+
+Por ejemplo, gracias a un código similar al siguiente podrás representar el flujo de interacción entre diferentes ramas, muy acorde a nuestro curso ¿no?
+
+ver diagrama mermaid1 
+
+Al insertar el código en tu documento podrás ver el resultado luciendo como esta imagen.
+
+
+ver diagrama mermaid2
+
+
+Hacer diagramas así es muy útil para representar flujos de trabajo de una manera visual y mucho más cómodos de entender, además, una ventaja adicional, es que no se requiere ninguna instalación o configuración adicional, simplemente agregas el diagrama y todo aparece de maravilla.
+
+Para poder jugar más con el código mermaid en tus documentos, lo mejor es visitar el visualizador de diagramas de mermaid aquí.
+
+Ojalá te animes a usar todas estas herramientas para hacer lo que todo desarrollador de software debe hacer ¡Una gran documentación!
+
+
+
+links : https://mermaid.live/edit#pako:eNpVjUFvgkAQhf_KZk5tAkYFFPbQpELrxaQ9eCp4mMjIEmWXLEusBf57F0zTdg6TeXnfe9PBUeUEHE4XdT0K1Ibtk0wyO89pLHTZmAqbA3Pdp35LhlVK0q1nm4etYo1QdV3K4vHOb0aIxd1uxIgZUcrzcLfiKf8mqWdJusPaqPrw19lfVc9e0vJd2Pr_jtBkU6_pCfkJ3SNqFqOeEHCg0GUO3OiWHKhIVzhK6EY3AyOoogy4PXPU5wwyOdhMjfJDqeonplVbCLDdl8aqts7RUFJiofEXIZmTjlUrDfBFOFUA7-DTqiCahUsvWHpzL_IWnr924Abcj2Z-FEVr3-4wWHkrf3Dga_o6n4XrYPgGKRxzVA
+
+
+
+
+Hacer diagramas así es muy útil para representar flujos de trabajo de una manera visual y mucho más cómodos de entender, además, una ventaja adicional, es que no se requiere ninguna instalación o configuración adicional, simplemente agregas el diagrama y todo aparece de maravilla.
+
+Para poder jugar más con el código mermaid en tus documentos, lo mejor es visitar el visualizador de diagramas de mermaid aquí.
+
+Ojalá te animes a usar todas estas herramientas para hacer lo que todo desarrollador de software debe hacer ¡Una gran documentación!
+
+
+--------------------------------------------------------------------
+
+# 22 Creación de una Portada de Perfil en GitHub con Markdown 
+
+
+Documentar es una de las tareas que más cuesta a los programadores, pero Markdown lo simplifica de forma notable. Este lenguaje de marcado permite crear portadas atractivas para tu perfil de GitHub, agregar badges con estadísticas de actividad y presentar tu información profesional de manera clara. A continuación se explica paso a paso cómo lograrlo.
+
+¿Cómo crear el repositorio especial para tu portada de GitHub?
+
+Para que tu perfil de GitHub muestre una portada personalizada, necesitas crear un repositorio cuyo nombre sea exactamente igual a tu nombre de usuario [0:52]. Este es el detalle más importante de todo el proceso. Cuando lo haces correctamente, GitHub despliega una leyenda confirmando que se trata de un repositorio especial cuyo archivo README aparecerá en tu perfil público [1:08].
+
+Los pasos para configurarlo son:
+
+Ir a la sección de repositorios y crear uno nuevo.
+Escribir tu nombre de usuario como nombre del repositorio.
+Marcarlo como público.
+Activar la opción de agregar el archivo README.
+Crear el repositorio.
+Una vez creado, puedes clonarlo en tu máquina local usando git clone con la URL que obtienes del botón code [1:52]. Si estás en un perfil nuevo, puedes usar HTTPS, aunque la mejor práctica de seguridad es configurar SSH [2:02].
+
+¿Qué contenido puedes agregar al README de tu perfil?
+
+Al abrir el archivo README en Visual Studio Code, encontrarás un header y comentarios con sugerencias que puedes eliminar [2:25]. Dentro de los recursos de la clase se comparte un texto base que puedes personalizar.
+
+El contenido típico incluye:
+
+Emojis descriptivos entre dos puntos, como íconos de computadora o lápiz.
+Una breve descripción profesional, por ejemplo: ingeniero de software, generador de contenido.
+Títulos con tres signos numerales (###) para organizar secciones como vías de contacto [3:09].
+Visual Studio Code permite previsualizar los cambios de Markdown en tiempo real presionando el ícono de Open Preview en la parte superior derecha [2:58]. Aunque VSCode no renderiza todos los emojis, estos sí se despliegan correctamente dentro de GitHub.
+
+¿Qué son los badges y cómo agregarlos a tu perfil?
+
+Los badges o medallas son pequeños recuadros visuales que muestran información dinámica sobre tu perfil o repositorios [3:36]. Se generan a partir del sitio shields.io/badges, donde encontrarás una amplia variedad de categorías disponibles [3:50].
+
+Para agregar un badge en Markdown se usa la sintaxis de enlace con imagen: entre corchetes el texto alternativo y entre paréntesis la URL del badge. Por ejemplo, puedes crear uno de tipo Website ingresando la URL de tu sitio web en shields.io y ejecutando la generación [4:08].
+
+¿Cómo mostrar tu actividad de commits con un badge?
+
+Una opción muy útil es el badge de GitHub Commit Activity, disponible en la categoría Activity de shields.io [4:27]. Este badge muestra cuántos commits has realizado en un repositorio específico durante un periodo determinado:
+
+W (weekly): actividad semanal.
+M (monthly): actividad mensual.
+Y (yearly): actividad anual.
+T (total): actividad total.
+Una vez generado, seleccionas el formato Markdown, copias el código y lo pegas en tu README [5:15]. Puedes repetir esto con varios repositorios para mostrar tu desempeño. Si algún repositorio no tiene actividad relevante, simplemente eliminas esa línea y el badge desaparece [5:50].
+
+¿Qué extensiones de VSCode facilitan escribir Markdown?
+
+Para trabajar de forma más cómoda con Markdown, puedes instalar extensiones desde el panel de extensiones de VSCode [6:03]. Una recomendación es Markdown Lint, que ofrece tips en tiempo real sobre buenas prácticas del lenguaje, como evitar líneas múltiples en blanco [6:18].
+
+Cuando termines de editar tu portada, el flujo de publicación es sencillo:
+
+git status para verificar los cambios.
+git add . para agregar todos los archivos.
+git commit -m "portada actualizada" para confirmar.
+git push para subir los cambios a GitHub [6:38].
+Al actualizar tu perfil en el navegador, verás los badges y la descripción con emojis reflejados de inmediato [6:52].
+
+Un consejo valioso para aprender más Markdown es visitar repositorios con buena documentación, como el de Azure OpenAI, y seleccionar la opción raw en su archivo README [7:17]. Esto te muestra el código Markdown en crudo, permitiéndote entender cómo se construyen imágenes, enlaces, títulos y badges. Cuanto más explores portadas de otros perfiles y documentación de proyectos, más experiencia ganarás con este lenguaje.
+
+Comparte tu portada personalizada en los comentarios para que todos puedan conocer tu perfil de GitHub.
+
+
+links:
+
+https://docs.github.com/es/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+
+
+https://github.com/platzi/git-github
+
+https://shields.io/badges
+
+
+
+--------------------------------------------------------------------
+
+
+
+
+
+--------------------------------------------------------------------
+
+
+lo esoty haciendo desde la nube hoy mismo 
+
+--------------------------------------------------------------------
+# 23 USO DE WIKIS 
+
+·
+En las clases hemos visto como utilizar el archivo README.md para mostrar la documentación del proyecto, con el tiempo esta práctica ha ganado cada vez más adopción por su sencillez, pero eso no es la única manera de crear documentación.
+Para ello existe dentro de Github la opción de crear una Wiki en donde puedes generar un nivel más estructurado de documentación. Puedes ver la sección de Wiki en tus proyectos en la sección superior del portal de Github.
+
+
+
+
+El formulario te da la opción de crear una nueva página a la que llama Home lo que es una gran opción, puedes usar esta página para mostrar la documentación inicial, pero también la puedes usar como un índice para poder llevar a tu lector a diferentes secciones y eso es lo que vamos a hacer. Escribe lo siguiente en tu formulario. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+### REPO DE LA CLASE:
+
+https://github.com/platzi/git-github
+
+
+
+https://github.com/platzi/git-github
+
+
+
+
+
+
+
+
+
+
+
+
+Si presionas el botón de guardar los cambios, el resultado de esta primera edición es igual al de esta imagen. 
+
+
+
+
+
+Repite la misma operación, ahora con una nueva página llamada Proyecto, en su descripción puedes agregar cualquier contenido, en la imagen que sigue puedes ver un ejemplo de como debe lucir tu nueva página. 
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+# 24  Uso de GitHub Gist para compartir y revisar codigo colaborativo
+
+
+GitHub Gist permite compartir y discutir fragmentos de código de forma sencilla, sin necesidad de crear un repositorio completo. Esta herramienta es ideal para obtener retroalimentación rápida y colaborativa sin comprometer los cambios en un proyecto principal.
+¿Qué es GitHub Gist y cómo se utiliza?
+GitHub Gist es una funcionalidad de GitHub diseñada para almacenar y compartir pequeños fragmentos de código. A diferencia de un repositorio tradicional, un Gist no se vincula a un proyecto completo, sino que permite discutir una pieza de código de manera aislada, ideal para colaboración rápida.
+    • Crear un Gist: Ingresa a gist.github.com, pega el fragmento de código y añade una descripción breve.
+    • Compartir el enlace: Copia la URL generada y compártela con tus colaboradores para abrir la discusión.
+    • Feedback en tiempo real: Los colaboradores pueden comentar directamente en el Gist, permitiendo iteraciones y mejoras rápidas.
+¿Cómo se usa GitHub Gist para colaboración?
+La simplicidad de los Gists facilita el trabajo en equipo al ofrecer un espacio directo de intercambio de ideas y mejoras sin alterar el proyecto base.
+    • Conversación activa: Puedes recibir y responder comentarios sobre el fragmento de código.
+    • Actualización en tiempo real: Si el colaborador sugiere cambios, puedes editar el Gist y mejorar el código sin necesidad de crear nuevas ramas.
+
+
+    • Ventajas en pair programming: Un Gist puede ser usado como base en sesiones de pair programming, manteniendo el enfoque en mejoras puntuales y rápidas.
+¿Cómo se gestionan los Gists en GitHub?
+GitHub permite gestionar y organizar fácilmente los Gists en tu perfil, lo que facilita tener una colección de snippets reutilizables.
+    • Acceso rápido: Los Gists se encuentran en tu perfil y pueden organizarse en una colección para referencias futuras.
+    • Eliminar Gists innecesarios: Si un Gist ya no es útil, puede eliminarse sin afectar otros proyectos.
+    • Edición y actualización: Los Gists pueden editarse directamente para mantener el código actualizado según las necesidades del proyecto.
+¿Qué beneficios adicionales ofrece GitHub Gist?
+Además de la colaboración, los Gists son útiles para mantener una biblioteca personal de snippets de código, mejorando la eficiencia en nuevos proyectos.
+    • Biblioteca personal: Guarda configuraciones iniciales o fragmentos reutilizables para evitar escribir código repetitivo.
+    • Probar ideas antes de integrarlas: Permite experimentar con variantes de código antes de incorporarlas oficialmente.
+    • Ahorro de tiempo: Facilita el acceso y reutilización de código en proyectos similares, optimizando el flujo de trabajo.
+
+
+
+
+
+Links: 
+
+https://gist.github.com/
+
+https://github.com/platzi/git-github
+
+https://docs.github.com/es/get-started/writing-on-github/editing-and-sharing-content-with-gists/creating-gists
+
+
+# PENDIENTE PRACTICAR  ESTA CLASE 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#25 CREACION Y PUBLICACION DE SITIOS WEB CON GITHUB PAGES 
+
+
+Si te interesa el desarrollo front end, existe una funcionalidad dentro de GitHub que te permite publicar sitios web de forma gratuita y accesible para cualquier persona en el mundo. GitHub Pages convierte un repositorio en un servidor de alojamiento web, sin importar si tu sitio es estático o dinámico, y todo funciona integrado con el flujo de trabajo habitual de Git.
+¿Cómo funciona GitHub Pages y por qué es tan útil?
+GitHub Pages no es un entorno aislado. Trabajas directamente sobre un repositorio de GitHub, lo que significa que cada cambio que hagas en tu código se refleja de manera casi inmediata en tu sitio publicado. Esto lo convierte en una herramienta ideal para portafolios, páginas personales o proyectos de práctica.
+Un dato importante: por defecto, todas las GitHub Pages son públicas [1:13]. La única forma de mantener una página privada es mediante planes empresariales. Para la mayoría de casos de uso personal o educativo, el repositorio público funciona perfectamente.
+¿Qué pasos seguir para crear tu repositorio de GitHub Pages?
+El proceso comienza en la página pages.github.com [0:41], donde encontrarás un tutorial básico. La regla fundamental es que el repositorio debe llamarse exactamente con el formato username.github.io [0:54]. Es decir, tu nombre de usuario seguido de .github.io.
+    • Crea un nuevo repositorio con el nombre tunombredeusuario.github.io.
+    • Hazlo público y agrega un archivo README.
+    • Copia la dirección SSH desde el botón code del repositorio.
+    • Clona el repositorio en tu entorno local con git clone [1:33].
+¿Cómo agregar contenido y la carpeta docs?
+Una vez clonado el repositorio, ábrelo en Visual Studio Code con el comando code . [1:46]. Lo siguiente es colocar los archivos de tu sitio web dentro de una carpeta con un nombre específico: docs [2:24]. Esta palabra es obligatoria, ya que GitHub Pages la reconoce como la fuente del contenido a desplegar.
+Puedes usar cualquier archivo HTML que desees. En el ejemplo se utiliza una plantilla con un index.html y una carpeta de assets [2:05]. Lo valioso es que puedes personalizar completamente el contenido: agregar tus redes sociales, tu imagen y cualquier información que quieras compartir.
+¿Cómo subir los cambios y configurar el despliegue?
+Con la carpeta docs lista, el siguiente paso es subir los cambios al repositorio remoto. Desde la terminal ejecuta los siguientes comandos [3:06]:
+bash git add . git commit -m "plantilla HTML" git push
+Una vez que los cambios estén en GitHub, dirígete a Settings del repositorio. En la columna izquierda selecciona la categoría Pages [3:27]. El asistente te preguntará desde dónde desplegar la información:
+    • Selecciona Deploy from a branch en lugar de GitHub Actions.
+    • Elige la rama Main como fuente.
+    • Selecciona la carpeta /docs como directorio raíz del sitio [3:44].
+    • Guarda los cambios.
+Cuando aparezca el mensaje GitHub Pages Source Saved, regresa a la página principal y luego vuelve a entrar a Settings > Pages. Verás un nuevo mensaje indicando que tu sitio está en vivo junto con la URL pública [4:03].
+¿Qué son los dominios personalizados en GitHub Pages?
+Dentro de la configuración de Pages existe una sección llamada Custom Domain [4:26]. Esta funcionalidad te permite asociar un dominio propio, como tunombre.com, a tu GitHub Page. De esta forma, la URL deja de ser larga y pasa a corresponder con un nombre de dominio personalizado, lo cual es ideal si quieres darle un aspecto más profesional a tu presencia en línea.
+Cada modificación que realices en la plantilla HTML dentro de la carpeta docs se verá reflejada de forma casi inmediata en tu página publicada [4:52]. Esto hace que el ciclo de desarrollo y despliegue sea extremadamente ágil.
+Si ya creaste tu GitHub Page, compártela para que otros puedan ver el resultado de tu trabajo y te den retroalimentación sobre el diseño y contenido que elegiste.
+
+LINKS :
+
+
+https://docs.github.com/es/pages
+
+https://github.com/platzi/git-github
+
+https://docs.github.com/es/pages/quickstart
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### REPO DE LA CLASE:
+
+https://github.com/platzi/git-github
+
+
+
+https://github.com/platzi/git-github
+
