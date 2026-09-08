@@ -201,7 +201,7 @@ https://docs.github.com/es/get-started/start-your-journey
 
 ----------------------------------
 
-Gestión de ramas en Git: creación, fusión y eliminación eficiente
+#4 Gestión de ramas en Git: creación, fusión y eliminación eficiente
 
 
 Trabajar con ramas en Git es la forma más segura de desarrollar funcionalidades sin afectar el código principal de un proyecto. Cuando dominas este flujo —crear una rama, hacer cambios, fusionar y limpiar— tu productividad y la de tu equipo crecen de manera notable.
@@ -274,7 +274,7 @@ https://git-scm.com/docs/git-checkout
 ---------------------------------- 
 ----------------------------------
 
- Git reset vs revert para deshacer commits
+ # 5 Git reset vs revert para deshacer commits
 
 
 Cuando empiezas con control de versiones, Git Reset y Git Revert se convierten en tus mejores aliados para deshacer commits sin romper el repositorio. Ambos comandos te ayudan a corregir errores, limpiar el historial y resolver conflictos, pero funcionan de maneras muy distintas y conocer la diferencia te puede ahorrar horas de trabajo perdido.
@@ -1561,7 +1561,8 @@ lo esoty haciendo desde la nube hoy mismo
 # 23 USO DE WIKIS 
 
 ·
-En las clases hemos visto como utilizar el archivo README.md para mostrar la documentación del proyecto, con el tiempo esta práctica ha ganado cada vez más adopción por su sencillez, pero eso no es la única manera de crear documentación.
+
+En las clases hemos visto como utilizar el archivo README.md para mostrar la documentación del proyecto, con el tiempo esta práctica ha ganado cada vez más adopción por su sencillez, pero eso no es la única manera de crear documentación.
 Para ello existe dentro de Github la opción de crear una Wiki en donde puedes generar un nivel más estructurado de documentación. Puedes ver la sección de Wiki en tus proyectos en la sección superior del portal de Github.
 
 
