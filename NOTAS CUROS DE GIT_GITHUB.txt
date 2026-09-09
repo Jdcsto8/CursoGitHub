@@ -349,7 +349,7 @@ https://git-scm.com/docs/git-revert
 
 
 ----------------------------------------------------------------------
-Git Tag y Checkout sin romper tu proyecto
+# 6  Git Tag y Checkout sin romper tu proyecto
 
 
 
@@ -427,7 +427,7 @@ La ventaja es enorme: regresas a un commit previo, juegas con los archivos, vali
 ----------------------------------------------------------------------
 
 
-Cómo resolver conflictos de merge en Git
+# 7 Cómo resolver conflictos de merge en Gitgit git 
 
 
 
@@ -511,7 +511,7 @@ https://git-scm.com/docs/git-branch
 
 https://git-scm.com/docs/git-merge
 ----------------------------------------------------------------------
-Uso de Git en Visual Studio Code
+8. Uso de Git en Visual Studio Code
 
 
 Visual Studio Code ofrece una interfaz visual y eficiente para gestionar versiones con Git, simplificando muchas tareas complejas y ahorrando tiempo a los desarrolladores. Integrar VS Code en nuestro flujo de trabajo diario puede facilitar considerablemente el manejo de ramas, commits y conflictos sin depender tanto de comandos en la terminal.
