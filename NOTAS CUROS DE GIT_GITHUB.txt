@@ -558,7 +558,7 @@ INTRODUCCION A GIT HUB
 
 
 
-# Uso de GitHub para Colaboración y Desarrollo Seguro
+#9 Uso de GitHub para Colaboración y Desarrollo Seguro
 
 
 
@@ -595,7 +595,7 @@ LINKS: https://github.com/
 
 ----------------------------------------------------------------------
 
-#Cómo crear y proteger tu cuenta de GitHub
+# 10 Cómo crear y proteger tu cuenta de GitHub
 
 
 
@@ -666,7 +666,7 @@ links
 ----------------------------------------------------------------------
 
 
-#Proceso de Trabajo con Git y GitHub: Creación y Revisión de Repositorios
+#11 Proceso de Trabajo con Git y GitHub: Creación y Revisión de Repositorios
 
 
 
@@ -701,7 +701,7 @@ https://docs.github.com/es/get-started/start-your-journey
 
 ----------------------------------------------------------------------
 
-Crea y clona tu primer repo en GitHub
+# 12  Crea y clona tu primer repo en GitHub
 
 
 
@@ -1762,7 +1762,7 @@ https://docs.github.com/es/pages/quickstart
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### REPO DE LA CLASE:
-## continuamos repaso clase 4 
+## continuamos repaso clase 13
 
 
 https://github.com/platzi/git-github
