@@ -763,7 +763,7 @@ links: https://github.com/platzi/git-github
 
 ----------------------------------------------------------------------
 
-#Precios y Planes de Productos de Github
+# 13 Precios y Planes de Productos de Github
 
 
 Productos de Github: Precios, planes y apps
@@ -817,7 +817,7 @@ La verdad es que hay mucho que considerar en el tema de costos y beneficios de t
 
 ----------------------------------------------------------------------
 
-# Configuración de SSH en GitHub para Windows, Linux y Mac
+# 14 Configuración de SSH en GitHub para Windows, Linux y Mac
 
 
 ### OJO HACERLO EN LA PC CON LA WSL DE WINDWOS EN LA TORRE 
@@ -925,7 +925,7 @@ https://docs.github.com/es/authentication/connecting-to-github-with-ssh
 ----------------------------------------------------------------------
 
 
-#Uso de Forks y Estrellas en Repositorios de GitHub
+# 15 Uso de Forks y Estrellas en Repositorios de GitHub
 
 
 Entender el uso de forks y estrellas en GitHub optimiza la gestión de proyectos y recursos al trabajar en esta plataforma. Aquí exploraremos cómo funcionan estos elementos y cómo pueden ayudarte a organizar tus repositorios en función de tus necesidades.
@@ -971,7 +971,7 @@ https://docs.github.com/es/authentication/connecting-to-github-with-ssh
 ----------------------------------------------------------------------
 
 
-#Uso de git pull, git push y git fetch en repositorios GitHub
+# 16 Uso de git pull, git push y git fetch en repositorios GitHub
 
 
 
@@ -1054,7 +1054,7 @@ https://git-scm.com/docs/git-push
 
 ----------------------------------------------------------------------
 
-#Plantillas de issues en GitHub paso a paso
+#17 Plantillas de issues en GitHub paso a paso
 
 
 
@@ -1143,27 +1143,10 @@ https://github.com/platzi/git-github
 
 ----------------------------------------------------------------------
 
-#Uso de Pull Requests en GitHub para Colaboración Efectiva
+---------------------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-----------------------------------------------------------------------
-
-
-#Uso de Pull Requests en GitHub para Colaboración Efectiva
+#18 Uso de Pull Requests en GitHub para Colaboración Efectiva
 
 
 
@@ -1762,7 +1745,7 @@ https://docs.github.com/es/pages/quickstart
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### REPO DE LA CLASE:
-## continuamos repaso clase 13
+## continuamos repaso clase 19
 
 
 https://github.com/platzi/git-github
