@@ -1809,6 +1809,194 @@ https://github.com/codespaces
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# 27 Plantillas de Codespaces con Django y devcontainer
+
+Trabajar con plantillas de GitHub Codespaces te permite levantar entornos preconfigurados para Django, Node, PHP, .NET o Jupyter sin tocar tu máquina local. Aquí verás cómo crear uno desde cero, editar el archivo devcontainer.json y conectarlo a Visual Studio Code Desktop para sacarle más provecho al ciclo de vida del entorno.
+
+¿Cómo creo un Codespace desde una plantilla en lugar de un repositorio?
+
+Entra a github.com/codespaces y verás a la izquierda la lista de tus entornos creados. A la derecha aparece la sección de plantillas con la opción See all para desplegarlas todas [01:00].
+
+Al elegir una plantilla, por ejemplo Django con Python, el Codespace se crea sin pedirte el cuestionario habitual. Solo esperas a que termine de configurarse y ya tienes el entorno corriendo.
+
+¿Qué ventaja tiene una plantilla sobre crear un Codespace desde un repositorio? Te ahorra el cuestionario inicial y te entrega un proyecto base ya funcional, ideal para experimentar con tecnologías nuevas sin instalar nada local.
+
+¿La URL del Codespace es pública?
+
+Sí. Al copiar la URL del proyecto y abrirla en otra pestaña, verás que es accesible desde Internet [01:45]. Como cada Codespace corre sobre una máquina virtual expuesta, puedes compartir esa dirección con alguien para mostrar avances en vivo.
+
+¿Cómo edito código en tiempo real dentro de un Codespace de Django?
+
+Python no necesita compilarse, así que los cambios se reflejan casi al instante. En la línea 24 del archivo de la plantilla aparece el texto GitHub Codespaces con Django, y al modificarlo el navegador refresca el resultado de inmediato [02:30].
+
+Si necesitas reiniciar el servidor, dentro de la terminal presionas Ctrl C para terminar la sesión, limpias con clear y vuelves a ejecutar el comando con la flecha arriba dos veces. En la línea 27, al editar Hello World y agregar una letra, basta un pequeño refresco de pantalla para ver el cambio aplicado.
+
+¿Qué hace el archivo devcontainer.json en un Codespace?
+
+Dentro del proyecto encontrarás una carpeta llamada .devcontainer con un archivo JSON que define toda la configuración del entorno [04:15]. Este archivo mete los archivos y dependencias dentro de un contenedor, una especie de minimáquina virtual donde corre tu Visual Studio en el navegador junto con el lenguaje y las herramientas necesarias.
+
+En la línea 7 está la configuración base de Python para el proyecto.
+En la línea 20 aparece el listado de extensiones de VS Code que se instalan por defecto.
+En la sección de extensiones puedes agregar nuevas y persistirlas en el contenedor.
+¿Cómo agrego una extensión de forma permanente al Codespace?
+
+Buscas la extensión deseada, por ejemplo Live Share, y la instalas dentro del Codespace. Pero instalarla así no la deja fija: si reinicias el entorno, podrías perderla.
+
+La solución está en el pequeño engrane de la extensión, donde eliges Add to devcontainer.json [05:30]. Al hacerlo, el archivo de configuración registra que esa plantilla de Django necesita Python y también Live Share, y la extensión queda lista cada vez que levantes el Codespace.
+
+¿Para qué sirve add to devcontainer.json? Sirve para que una extensión instalada manualmente quede registrada en la configuración del contenedor y se reinstale automáticamente la próxima vez que se cree el entorno.
+
+¿Cómo abro un Codespace en Visual Studio Code Desktop?
+
+Desde el menú de tres líneas horizontales en la parte superior izquierda eliges Open in Visual Studio Code Desktop. Se abre un pop up de confirmación, aceptas y, si es tu primera vez, VS Code te pedirá instalar la extensión GitHub Codespaces [07:00].
+
+Una vez instalado, abajo aparece una leyenda amarilla indicando que se está abriendo un entorno remoto. La conexión es rápida y la URL del proyecto pasa a ser local.
+
+¿Por qué me marca error de puerto en uso al ejecutar Python?
+
+Porque la aplicación sigue corriendo en tu navegador y en VS Code Desktop, y ambas apuntan a la misma máquina virtual. Dos procesos no pueden ocupar el mismo puerto al mismo tiempo.
+
+Para solucionarlo:
+
+Regresa al explorador y abre una nueva terminal en el Codespace.
+Si la terminal no responde, refresca la página para reactivar el entorno.
+Presiona Ctrl C para detener la aplicación que sigue ejecutándose.
+Vuelve a Visual Studio Code, ejecuta clear y levanta de nuevo el servidor.
+Con eso liberas el puerto y puedes seguir trabajando desde el escritorio sin perder los cambios. El control de versiones también funciona, así que tus commits llegan al mismo repositorio sin importar si editas en el navegador o en VS Code.
+
+¿Qué plantillas de Codespaces existen además de Django?
+
+La galería incluye opciones para distintos stacks que puedes usar para aprender o prototipar:
+
+Node.js para proyectos JavaScript del lado servidor.
+PHP para entornos web clásicos.
+.NET para aplicaciones del ecosistema Microsoft.
+Django con Python como la usada en este recorrido.
+Jupyter para análisis de datos con Python.
+La imagen de Jupyter es especialmente útil si estás explorando ciencia de datos: te permite jugar con datasets, aprender Python orientado a esa especialización y, cuando termines, eliminar el Codespace sin haber instalado nada en tu computadora.
+
+La idea de fondo es que abras estas plantillas para revisar cómo están armadas por dentro, leas el devcontainer.json de cada una y aprendas a trabajar con tecnologías nuevas sin depender de tu entorno local. ¿Qué plantilla vas a probar primero?
+
+
+link
+
+https://docs.github.com/es/codespaces/about-codespaces/understanding-the-codespace-lifecycle
+https://github.com/platzi/git-github
+https://github.com/codespaces
+
+------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------
+
+#29 Pair programming con Live Share en Codespaces
+
+Colaborar en código sin que nadie toque tu equipo es posible gracias a la combinación de GitHub Codespaces y la extensión Live Share. Aquí aprendes a invitar a otra persona a tu entorno virtual, editar en tiempo real y cerrar la sesión sin dejar rastro en tu máquina local.
+
+Esta guía es útil si trabajas con Django, Python u otras tecnologías en VS Code y quieres hacer pair programming aprovechando la nube.
+
+Qué es Live Share y por qué usarlo dentro de Codespaces
+
+Live Share es la extensión que abre un puente de comunicación para que un colaborador entre a tu entorno de trabajo, edite líneas y, junto contigo, decida qué se queda como producto final antes de un commit.
+
+Dentro de Codespaces, esta extensión vive en la categoría Codespaces del panel de extensiones de VS Code. Si la dejaste preconfigurada en tu archivo devcontainer.json, aparecerá lista para usarse al abrir el entorno.
+
+¿Qué es pair programming? Es una práctica donde dos desarrolladores trabajan sobre el mismo código al mismo tiempo. Uno escribe, el otro revisa y sugiere, y ambos acuerdan los cambios finales [01:41].
+
+Cómo iniciar una sesión de Live Share
+
+Desde el explorador de archivos en VS Code, baja hasta la sección Live Share y haz clic. Se genera un enlace de invitación que se copia automáticamente a tu clipboard.
+
+Envía ese enlace a tu colaborador por el medio que prefieras. Cuando lo abra, verá dos opciones:
+
+Abrirlo directamente en Visual Studio Code de escritorio.
+Continuar en la web con VS Code Web.
+Lo ideal es que tu invitado lo abra desde VS Code de escritorio para optimizar recursos. Si entra como anónimo, puede registrarse con un alias temporal tipo Invitado 2.
+
+Cómo se ve la colaboración en tiempo real
+
+Una vez conectado, VS Code te notifica que el invitado entró a la sesión. En la pantalla aparece su cursor con su nombre y puedes seguir su actividad línea por línea.
+
+Las ediciones fluyen en ambos sentidos casi en tiempo real. Tú ves lo que él modifica y él ve lo que tú escribes. Si quieres mantenerte pasivo y solo revisar sus sugerencias, puedes hacerlo sin interrumpir.
+
+¿Quién se queda con el crédito de los cambios en Live Share? El dueño del Codespace. Como las ediciones ocurren en tu entorno, el commit queda a tu nombre, pero VS Code añade una nota indicando que el trabajo se hizo en colaboración con tu invitado [04:30].
+
+Qué pasa si cierras el Codespace durante una sesión
+
+El entorno es virtual y vive en la nube, así que si cierras tu Codespace, la sesión del invitado también termina. Es una protección natural: nadie puede seguir trabajando en tu espacio sin tu presencia.
+
+Si vuelves a abrir el Codespace y no tienes la extensión declarada en devcontainer.json, puede que necesites instalarla de nuevo. Por eso conviene dejarla preconfigurada desde el principio.
+
+Cómo cerrar correctamente la sesión y el Codespace
+
+Cuando termines de colaborar, baja a la sección Share y elige la opción Stop collaboration session. Eso saca a todos los participantes y devuelve tu trabajo a un estado individual.
+
+Después, ve a github.com/codespaces para revisar tu plantilla. Lo recomendado es entrar al menú de los tres puntos y eliminar la plantilla una vez concluido el trabajo, porque sigue siendo un entorno en la nube que consume recursos.
+
+Beneficios concretos de colaborar con Codespaces y Live Share
+
+Trabajar así tiene ventajas que se notan desde la primera sesión:
+
+Permites que una o varias personas entren a un entorno virtual sin tocar tu equipo local.
+Pueden unificar el trabajo de todo el equipo en un solo commit.
+Aíslas tu entorno de desarrollo personal del resto del equipo.
+Configuras extensiones específicas (Markdown, Python, C#, Live Share) y las mandas al entorno virtual desde devcontainer.json.
+El pair programming suele ser una de las prácticas que más cuesta adoptar a los desarrolladores. Tener un entorno en la nube donde puedes invitar amigos, editar juntos y cerrar todo al final reduce esa fricción.
+
+¿Ya probaste invitar a alguien a tu Codespace? Cuéntame en los comentarios cómo te fue con tu primera sesión de Live Share y qué proyecto compartiste.
+
+link
+
+https://github.com/platzi/git-github
+https://code.visualstudio.com/blogs/2017/11/15/live-share
+
+---------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------
+
+# 29 Uso del Editor Web de GitHub para Edición Rápida de Archivos
+
+Dentro de cualquier repositorio de GitHub existe un editor de texto integrado al que puedes acceder con solo presionar un punto (".") en tu teclado. Esta herramienta, conocida como GitHub Dev Editor, ofrece una interfaz visual muy similar a Visual Studio Code directamente en el navegador, sin necesidad de instalar nada ni consumir recursos en la nube. Aunque puede pasar desapercibida durante años, resulta extremadamente útil para correcciones rápidas.
+
+¿Cómo se accede al GitHub Dev Editor?
+
+Desde la portada de cualquier repositorio o cualquier ubicación dentro de él, basta con presionar la tecla punto (".") para que GitHub redirija automáticamente a un editor web [01:03]. En cuestión de segundos, el entorno carga todos los archivos del proyecto con una interfaz familiar: explorador de archivos a la izquierda, editor con números de línea al centro y preview de archivos como el readme.
+
+Una vez dentro, puedes:
+
+Editar cualquier archivo del proyecto, no solo el readme.
+Ver los cambios reflejados en el ícono de control de versiones.
+Realizar un commit y push directamente desde el editor con un mensaje descriptivo [02:00].
+El flujo es simple: abres el editor, haces la modificación, cierras la pestaña del archivo para guardar y luego ejecutas el commit. Para regresar al repositorio original, puedes ir al menú de tres líneas horizontales y seleccionar "Go to repository" [02:30], lo que abre una nueva pestaña donde confirmas que los cambios ya están aplicados.
+
+¿Cuál es la diferencia entre el Dev Editor y un CodeSpace?
+
+Aunque la interfaz del Dev Editor se parece mucho a la de un GitHub CodeSpace, la diferencia es fundamental: el Dev Editor es únicamente un editor de texto [03:07]. No cuenta con terminal integrada ni permite compilar, ejecutar o probar código. Si intentas abrir una terminal, el propio editor te sugiere migrar a un CodeSpace.
+
+En cambio, un CodeSpace es una instancia completa en la nube que funciona como un entorno de desarrollo remoto. Incluye terminal, extensiones, compiladores y todo lo necesario para ejecutar un proyecto de principio a fin.
+
+¿Cuándo conviene usar cada herramienta?
+
+La decisión depende de dos factores: la complejidad de la tarea y el costo [04:05].
+
+Dev Editor: ideal para corregir errores ortográficos en la documentación, eliminar código comentado que se dejó por error o modificar unas pocas líneas. Es gratuito y no consume recursos.
+CodeSpace: necesario cuando requieres compilar, ejecutar pruebas o trabajar con un entorno de desarrollo completo. Tiene un costo asociado que se genera en tu cuenta una vez que superas las horas gratuitas mensuales incluidas en tu plan.
+¿Para qué casos prácticos resulta más útil el Dev Editor?
+
+El GitHub Dev Editor brilla en situaciones cotidianas donde abrir un entorno completo sería excesivo [03:30]:
+
+Corregir un comentario adicional que quedó en el código.
+Arreglar un error ortográfico en la documentación del proyecto.
+Editar archivos de configuración con cambios menores.
+Revisar visualmente la estructura de varios archivos sin descargar el repositorio.
+En lugar de editar el archivo "en crudo" usando el pequeño ícono de lápiz que GitHub ofrece por defecto, el Dev Editor proporciona una experiencia visual mucho más cómoda con resaltado de sintaxis y navegación entre archivos.
+
+El balance entre estas dos herramientas —edición rápida gratuita con el Dev Editor y entorno de desarrollo remoto con CodeSpaces— representa el cierre natural del trabajo colaborativo en GitHub. Si ya conocías el editor de lápiz pero no este atajo, pruébalo en tu próximo repositorio y comparte qué tan útil te resulta para tus flujos de trabajo diarios.
+
+
+link
+https://docs.github.com/es/codespaces/the-githubdev-web-based-editor
+https://github.com/platzi/git-github
+
+
+
 
 
 
