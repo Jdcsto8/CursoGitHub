@@ -2076,6 +2076,151 @@ GITHUB_TOKEN: GitHub proporciona un token único y temporal para cada flujo de t
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 31  Secret Scanning en GitHub y sus límites
+
+Subir por accidente una API key o una cadena de conexión al repositorio es uno de los errores más comunes en desarrollo. GitHub ofrece Secret Scanning y Code Scanning como red de seguridad para detectar esas filtraciones antes de que alguien las explote, y aquí verás cómo activarlas, probarlas y entender sus límites reales.
+
+¿Por qué necesitas escanear secretos en tu repositorio?
+
+Un archivo gitignore bien configurado evita que subas archivos sensibles, pero no protege contra el descuido humano. Puedes escribir una llave directamente dentro del código fuente y, sin darte cuenta, hacer push de información que compromete cuentas de terceros.
+
+Entre los datos delicados que suelen filtrarse están:
+
+Llaves de acceso a APIs externas como Stripe.
+Cadenas de conexión a bases de datos.
+Tokens de autenticación o credenciales de servicios cloud.
+¿Qué es un secreto en GitHub? Es cualquier credencial, token o llave que da acceso a un servicio. Si queda expuesto en un commit, cualquiera con acceso al repositorio puede usarlo.
+
+¿Cómo activar Code Scanning y Secret Scanning en GitHub?
+
+Estas funciones solo aparecen disponibles cuando tu repositorio es público, así que el primer paso es revisar la visibilidad en la danger zone de los settings [2:00].
+
+Una vez público, entra a Settings > Code security and analysis [2:30] y configura lo siguiente:
+
+Localiza la sección Code scanning y selecciona CodeQL analysis.
+Deja la configuración por defecto, donde GitHub detecta automáticamente el lenguaje del proyecto (en este ejemplo, C#).
+Habilita CodeQL y confirma los criterios de búsqueda.
+Baja a Secret scanning: viene activado por defecto, con un botón para deshabilitar.
+¿Qué hace CodeQL exactamente?
+
+CodeQL analiza el código fuente buscando patrones de vulnerabilidad. Trabaja en segundo plano cada vez que haces push, sin que tengas que ejecutarlo manualmente.
+
+¿Cómo reacciona GitHub ante una API key filtrada?
+
+Para probar la herramienta, basta con escribir en program.cs una línea como string stripeApiKey con un valor entre comillas simulando una credencial real [4:30]. Después aplicas la secuencia habitual:
+
+git status para confirmar el cambio.
+git add y git commit con un mensaje descriptivo.
+git push para enviarlo al repositorio.
+Al regresar al repositorio, aparece un círculo amarillo de pending mientras GitHub evalúa los cambios. Tras refrescar la página, la pestaña Security muestra un 1 en alertas. Y aquí viene lo interesante: dentro encuentras tres categorías de alertas, Dependabot, Code Scanning y Secret Scanning, y en esta última está la notificación de la llave detectada.
+
+¿Qué hago si GitHub detecta un secreto filtrado? Rota la credencial en el servicio de origen, modifica tu código para usar variables de entorno y recuerda que borrar la línea no la elimina del historial de commits.
+
+¿Cuáles son los pasos para mitigar la filtración?
+
+GitHub recomienda cuatro pasos que aplican a casi cualquier secreto expuesto:
+
+Contactar al proveedor (la cuenta de terceros) y rotar las credenciales.
+Invalidar la llave anterior para que ya no funcione.
+Modificar el código para mover el secreto a variables de entorno.
+Confirmar que el flujo nuevo no vuelva a filtrar el dato en futuros commits.
+¿Por qué Secret Scanning no detecta todos los secretos?
+
+Aquí está el matiz que muchos pasan por alto. Cuando escribes algo evidente como stripeApiKey, GitHub lo identifica rápido por el patrón conocido. Pero si nombras la variable string testingConnection y pegas una cadena de conexión SQL real, la herramienta no genera ninguna alerta [9:00].
+
+Después de esperar cuatro minutos para confirmar que el escaneo terminó, la única alerta visible sigue siendo la de Stripe. La cadena de conexión a SQL pasó desapercibida porque el nombre de la variable no coincidía con patrones reconocibles como sql connection o sql key.
+
+La lección es clara: Secret Scanning ayuda, pero no es infalible. Detecta patrones bien documentados de proveedores conocidos, no cualquier credencial disfrazada con un nombre genérico.
+
+¿Cuál es la mejor estrategia para proteger tus credenciales?
+
+La frase que resume todo es simple: siempre será más fácil prevenir que lamentar. Las herramientas de escaneo son una segunda línea de defensa, no la primera.
+
+Tu flujo ideal debe verse así:
+
+Guarda credenciales en archivos .env o appsettings.json según tu lenguaje.
+Añade esos archivos al gitignore para excluirlos del control de versiones.
+Usa variables de entorno en tu código en lugar de valores hardcodeados.
+Mantén Code Scanning y Secret Scanning activos como respaldo.
+Si adoptas estas prácticas desde el inicio, las alertas de seguridad de GitHub serán algo que casi nunca verás. Y eso es exactamente lo que quieres, porque rotar llaves o cadenas de conexión en producción es un proceso complicado: tu producto rara vez es el único consumidor de esas credenciales, y cada cambio puede romper integraciones con otros servicios.
+
+¿Ya configuraste Secret Scanning en tus repositorios? Cuéntame en los comentarios qué tipo de credenciales sueles manejar y cómo organizas tus variables de entorno.
+
+
+links 
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+--------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
+# 32  Gestión de Seguridad de Paquetes con Dependabot en Proyectos .NET
+
+Resumen
+Cada aplicación moderna depende de paquetes de terceros para funcionar: Flask en Python, librerías de NPM en Node o paquetes de NuGet en .NET. Esta dependencia, aunque acelera el desarrollo, abre brechas de seguridad cuando esos paquetes no están actualizados. Aquí es donde Dependabot se convierte en una herramienta esencial dentro de GitHub, capaz de detectar vulnerabilidades, contener el problema y generar soluciones automáticas mediante pull requests.
+
+¿Por qué los paquetes desactualizados son un riesgo de seguridad?
+
+Cuando construyes una aplicación y quieres leer un archivo JSON, conectar una API con Flask o dar formato con colores en Node, necesitas paquetes externos [0:12]. Estas dependencias de terceros hacen tu trabajo más sencillo, pero si no se mantienen al día, pueden contener vulnerabilidades conocidas que un atacante podría explotar.
+
+El problema crece conforme tu proyecto se hace más grande. Entre más paquetes agregas, más difícil resulta recordar cuáles necesitan actualización. Dependabot resuelve exactamente esto: monitorea tus dependencias de forma continua y te alerta en cuanto detecta una versión con problemas de seguridad.
+
+¿Cómo se habilita Dependabot en un repositorio de GitHub?
+
+Para activar Dependabot, puedes ir a la sección de Settings del repositorio o directamente desde la pestaña de Security [1:05]. Ambas rutas llevan al mismo lugar: Code Security and Analysis.
+
+Una vez ahí, los pasos son los siguientes:
+
+Habilitar las alertas de Dependabot para recibir notificaciones sobre vulnerabilidades.
+Activar las actualizaciones de seguridad para que Dependabot proponga correcciones automáticas.
+Habilitar las actualizaciones de seguridad agrupadas para organizar mejor los cambios.
+Activar Dependabot Version Updates, que es la funcionalidad más importante [1:52].
+Al habilitar Version Updates, GitHub genera automáticamente un archivo dependabot.yml dentro de la carpeta .github del repositorio. Este archivo YAML define el intervalo de verificación que Dependabot seguirá. Por defecto viene configurado como semanal (weekly), pero puede cambiarse a diario (daily) para un monitoreo más frecuente [2:12].
+
+¿Qué contiene el archivo dependabot.yml?
+
+El archivo dependabot.yml es la configuración central de Dependabot. Define qué ecosistema de paquetes monitorear y con qué frecuencia revisar nuevas versiones. Se almacena junto a otros archivos de configuración del repositorio, como los issue templates [2:30].
+
+¿Cómo funciona Dependabot con un paquete vulnerable en la práctica?
+
+Para demostrar el flujo completo, se agregó intencionalmente el paquete Newtonsoft.Json en su versión 12.0.3 a un proyecto de .NET [3:05]. Este paquete, probablemente el más utilizado en el ecosistema .NET, tiene su versión estable más reciente en 13.0.3. Sin embargo, la versión 12.0.3 presenta al menos una vulnerabilidad conocida, señalada con un signo de exclamación en NuGet.
+
+El paquete se instaló desde la terminal con el comando:
+
+bash dotnet add package Newtonsoft.Json --version 12.0.3
+
+Después de hacer commit y push al repositorio, ocurrió un detalle importante: como el archivo dependabot.yml se había creado directamente en GitHub, fue necesario ejecutar un git pull antes del git push para sincronizar los cambios remotos con los locales [4:35].
+
+¿Qué sucede cuando Dependabot detecta la vulnerabilidad?
+
+En cuestión de segundos, Dependabot identificó el problema y clasificó la alerta como de alta prioridad [5:15]. A diferencia de Secret Scanning, que solo notifica, Dependabot fue un paso más allá: creó automáticamente un pull request con la actualización del paquete a la versión segura.
+
+El pull request generado por Dependabot incluye:
+
+La explicación del problema y por qué es necesario actualizar.
+La versión actual frente a la versión recomendada.
+Un análisis de compatibilidad entre versiones, indicando las diferencias funcionales [5:50].
+Al hacer merge de ese pull request, el archivo .csproj del proyecto se actualizó automáticamente a la versión 13.0.1, la más estable disponible. Incluso la rama temporal creada por Dependabot se eliminó sola después de la fusión [6:25].
+
+¿Cuál es la mayor ventaja de usar Dependabot?
+
+La fortaleza principal de Dependabot es que no solo identifica el problema, sino que lo contiene y propone una solución mediante un pull request listo para fusionar [6:40]. Esto permite que cualquier miembro del equipo pueda revisar y aprobar la corrección sin necesidad de investigar manualmente cada paquete.
+
+Además, Dependabot trabaja de forma continua: cada vez que se publique una nueva versión de cualquier paquete que uses, generará un pull request para mantenerte siempre con las versiones más estables y seguras. Esto resulta especialmente valioso en proyectos grandes con decenas de dependencias, donde es fácil olvidar una actualización crítica.
+
+¿Ya habías configurado Dependabot en tus repositorios? Comparte tu experiencia y cuéntanos cuántas alertas te encontraste la primera vez que lo activaste.
+
+links 
+
+https://github.com/platzi/git-github
+
+https://github.com/dependabot
+
+https://www.nuget.org/packages/newtonsoft.json/
+
+-------------------------------------------------------------------
+------------------------------------------------------------------
+
+
 
 
 
