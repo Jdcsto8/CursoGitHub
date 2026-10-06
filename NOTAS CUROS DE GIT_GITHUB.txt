@@ -2309,6 +2309,204 @@ https://platzi.com/cursos/github-copilot/
 --------------------------------------------------------------------
 -----------------------------------------------------------------------------
 
+ADMINISTRACION DE GITHUB
+
+# 34 Creación y gestión de repositorios en GitHub
+
+Agrupar proyectos bajo un mismo techo es una de las ventajas más potentes que ofrece GitHub más allá de los repositorios individuales. Las organizaciones permiten reunir múltiples repositorios, gestionar colaboradores y presentar una identidad profesional ante la comunidad, sin importar si eres una gran empresa o un grupo de amigos apasionados por la tecnología.
+
+¿Qué es una organización en GitHub y por qué crearla?
+
+Una organización en GitHub es un nivel superior de agrupación que contiene repositorios, equipos y configuraciones compartidas. Compañías como Microsoft, Google y Meta tienen sus propias organizaciones donde agrupan todos los repositorios con los que contribuyen: documentación, proyectos de código abierto y muchos otros escenarios [0:08].
+
+No necesitas ser un gran corporativo para crear una. Si eres emprendedor, estudiante universitario o tienes un grupo de amigos con un meetup de tecnología, puedes crear algo como "Amigos de Python" y agrupar diferentes repositorios bajo esa identidad.
+
+¿Cómo se crea una organización paso a paso?
+
+Desde el home de tu perfil, busca el botón de más (+) y selecciona nueva organización [0:42]. GitHub presenta tres planes:
+
+Gratuito: cero dólares por usuario al mes, ideal para proyectos pequeños o sin ánimo de lucro.
+Team: con funcionalidades adicionales para equipos medianos.
+Enterprise: pensado para grandes compañías, a veintiún dólares por usuario al mes.
+El nombre de la organización debe ser único [1:15]. Si intentas usar "Google", ese nombre ya está reservado. Después debes indicar un correo de contacto y responder una pregunta clave: ¿la organización pertenece a tu cuenta personal o a un negocio o institución? Si eliges negocio, el formulario cambia para prevenir fraude y exige certificación [1:38].
+
+¿Cómo configurar permisos y colaboradores?
+
+Una vez creada la organización, puedes invitar colaboradores directamente desde la configuración [2:28]. Cada miembro recibe por defecto solo capacidad de lectura, pero puedes asignar niveles como:
+
+Sin permisos.
+Escritura.
+Administrador.
+Además, puedes definir si los miembros pueden crear repositorios públicos o privados, hacer fork de repositorios privados o participar en discusiones [4:08]. Estos alcances se configuran de forma general y después pueden filtrarse según las necesidades de cada colaborador.
+
+Un detalle importante es la opción de habilitar GitHub Copilot para los usuarios de la organización [2:43], aunque esto tiene un costo adicional de diecinueve dólares mensuales por usuario.
+
+¿Qué es el repositorio .github y el profile README?
+
+GitHub sugiere crear un repositorio público especial llamado .github [6:20]. Dentro de la ruta profile/README.md, puedes escribir una carta de presentación que aparecerá en el perfil público de tu organización. Funciona de manera similar al README de portada que se crea con el repositorio personal.
+
+Como ejemplo real, al visitar github.com/platzi puedes ver una organización verificada con su ícono, título personalizado como "Comunidad Platzi", y sus repositorios más populares ordenados por estrellas y forks [7:16]. Platzi cuenta con cuatrocientos veintiún repositorios y doscientas dieciocho personas colaborando.
+
+¿Cómo gestionar pull requests, issues y automatizaciones?
+
+El tutorial integrado de GitHub propone seis pasos para configurar tu organización. Entre ellos está crear un pull request con el archivo README base [4:42], lo que permite practicar el flujo de merge y eliminación de ramas.
+
+Otro paso relevante involucra GitHub Actions: un archivo YAML dentro de .github/workflows que automatiza la asignación de issues [5:30]. Por ejemplo, puedes configurar que cada nuevo issue sea asignado automáticamente a un miembro específico del equipo.
+
+¿Cómo mantener tu perfil organizacional actualizado?
+
+Las organizaciones a las que perteneces aparecen en tu perfil personal, debajo de tu imagen y logros [8:06]. Cada una muestra su ícono y un enlace directo. Tu categoría puede ser miembro, propietario o colaborador externo.
+
+Si ya no perteneces a una organización y esta no te ha eliminado, lo más responsable es retirarte tú mismo desde Settings > Organizaciones [8:30]. Esto garantiza que no tengas acceso a recursos que ya no te corresponden.
+
+Crea tu propia organización, invita a compañeros y amigos, y experimenta con la gestión de repositorios en equipo. La creatividad para mantener esos proyectos activos es lo que hará crecer tu comunidad.
+
+Links
+
+https://github.com/platzi
+
+--------------------------------------------------------
+-----------------------------------------------------------
+# 35 Automatización de GitHub Actions para Actualizar Perfil
+
+Personalizar tu perfil de GitHub va más allá de agregar íconos y enlaces sociales. Existe una forma de mantener tu portada siempre actualizada de manera automática, mostrando tu actividad más reciente sin mover un solo dedo. Esto es posible gracias a GitHub Actions, la herramienta de automatización integrada en GitHub que permite ejecutar flujos de trabajo programados directamente desde tus repositorios.
+
+¿Cómo funcionan las GitHub Actions para actualizar tu perfil?
+
+Las GitHub Actions permiten automatizar procesos dentro de un repositorio. Ya sea que se trate de revisiones de dependencias con Dependabot, compilaciones o despliegues, estas acciones se configuran mediante archivos YAML ubicados en una ruta específica del repositorio [01:30].
+
+En este caso, el objetivo es crear una acción que jale la actividad más reciente de GitHub y la inserte automáticamente en el README de tu repositorio de portada. Ese repositorio especial lleva el mismo nombre que tu usuario y funciona como la página principal de tu perfil.
+
+Para comenzar, necesitas editar el archivo README de tu repositorio de portada e insertar un bloque de comentarios en formato HTML que funciona como marcador. Este marcador indica dónde se colocará la actividad reciente. El fragmento incluye un título con emoji y la etiqueta recent activity, que la acción buscará para insertar el contenido dinámico [02:15].
+
+¿Qué es un archivo YAML y cómo se configura el flujo de trabajo?
+
+Dentro de la pestaña Actions del repositorio, puedes crear un nuevo flujo de trabajo seleccionando un simple workflow como plantilla base [03:50]. El archivo generado se llama por defecto blank.yaml y debe estar ubicado en la carpeta .github/workflows/ para que GitHub lo reconozca y ejecute correctamente.
+
+El archivo YAML contiene varias secciones importantes:
+
+name: define el nombre de la acción, por ejemplo "Actualizar README".
+schedule: utiliza el formato cron para agendar la ejecución periódica [04:40]. Un valor como */12 en el campo de horas indica que la tarea se ejecutará cada doce horas.
+jobs: especifica los pasos que correrán dentro de un agente, en este caso una máquina virtual con Ubuntu.
+steps: contiene las instrucciones concretas que el agente ejecutará.
+El primer paso es un checkout, que permite al agente acceder a los archivos del repositorio. El segundo paso utiliza una acción del Marketplace llamada README Workflows Recent Activity, una tarea preconstruida que extrae tu actividad reciente y la inyecta en el README [05:30].
+
+¿Qué es el Marketplace de GitHub Actions?
+
+El Marketplace es un catálogo donde encuentras tareas ya construidas por la comunidad [06:00]. Desde compilar aplicaciones en Java, agregar paquetes de .NET, hasta desplegar contenedores de Docker. Solo necesitas referenciar la acción en tu archivo YAML para integrarla a tu flujo.
+
+¿Qué papel juegan las variables de ambiente?
+
+La acción utiliza una sección llamada ENV, similar a los archivos .env de Node, Python o Java [06:20]. Estas variables de ambiente almacenan configuraciones sensibles. En este caso, se requiere un GITHUB_TOKEN que, al estar la acción dentro de tu propia cuenta, se genera automáticamente sin configuración adicional.
+
+¿Cómo ejecutar y depurar la GitHub Action?
+
+Una vez renombrado el archivo a algo descriptivo como update-read-me.yml y hecho el commit directamente a la rama main, puedes ir a la sección de Actions y ejecutar el flujo manualmente con el botón Run Workflow [07:40].
+
+Si algo falla, GitHub Actions muestra los errores con gran detalle. Cada paso aparece en la interfaz y el que falla se marca en color rojo [08:20]. En el ejemplo, el error fue que la acción no encontró el comentario marcador dentro del README porque el texto copiado tenía caracteres incorrectos. Tras corregir el marcador a recent activity sin espacios extra, la segunda ejecución fue exitosa en apenas cinco segundos [09:30].
+
+Datos importantes sobre la ejecución:
+
+La primera vez debes ejecutar la acción manualmente.
+A partir de la primera ejecución exitosa, se repite automáticamente según el intervalo configurado.
+El concepto de CI/CD (Continuous Integration / Continuous Deployment) es el marco más amplio donde viven las GitHub Actions, un tema que merece estudio dedicado.
+Además de la actividad reciente, puedes integrar otras fuentes como tus últimos videos de YouTube o estadísticas personalizadas. Existen portadas de perfil muy creativas que sirven de inspiración. Prueba distintas configuraciones, personaliza tu portada y comparte tus resultados en los comentarios.
+
+links 
+
+https://platzi.com/cursos/github-actions/
+
+
+--------------------------------------------------------------
+--------------------------------------------------------------
+# 36 Gestiona GitHub desde tu terminal con gh
+
+
+GitHub CLI es la línea de comandos oficial de GitHub que te permite crear repositorios, abrir issues y manejar pull requests sin salir de tu terminal. Si ya dominas Git pero quieres acelerar tu flujo en GitHub, esta herramienta te ahorra clics y te abre la puerta a la automatización.
+
+¿Qué es GitHub CLI y para qué sirve?
+
+GitHub CLI, identificado con el comando gh, extiende lo que normalmente haces con Git (commits, push, pull) hacia funciones propias del sitio web de GitHub. Con él manipulas pull requests, issues, actions y repositorios completos desde la consola.
+
+La idea es simple: todo lo que harías apuntando y haciendo clic en github.com, ahora lo escribes. Y aquí viene lo interesante, también puedes encadenar esos comandos en scripts para automatizar tareas repetitivas.
+
+¿Qué diferencia hay entre Git y GitHub CLI? Git es universal y funciona con cualquier proveedor (GitLab, Bitbucket, Gitea). GitHub CLI solo opera contra GitHub y te da acceso a sus funciones específicas como issues y pull requests.
+
+¿Cómo instalo y autentico GitHub CLI?
+
+La instalación parte del repositorio oficial cli/cli en GitHub, donde encontrarás instrucciones para Windows, Mac y Linux [01:05]. El proceso es prácticamente idéntico en cualquier sistema operativo: copias el fragmento de instalación, lo pegas en tu terminal y dejas que el gestor de paquetes haga el resto.
+
+Una vez instalado, valida la versión con un comando simple:
+
+bash gh --version
+
+No te obsesiones con tener la última versión exacta. Si el comando responde, estás listo.
+
+¿Cómo funciona gh auth login?
+
+El siguiente paso es la autenticación con gh auth login [02:30]. El asistente te guía por varias preguntas:
+
+Tipo de cuenta: github.com o GitHub Enterprise.
+Protocolo preferido para Git: HTTPS o SSH.
+Subir una llave SSH a tu cuenta de GitHub.
+Método de autenticación: navegador web o token personal.
+Un detalle clave: la llave SSH que pide GitHub CLI no es la misma que usas en tus repositorios anteriores. Aunque sea la misma computadora, GitHub trata a la CLI como una aplicación distinta, así que conviene crear una llave nueva con un título descriptivo, por ejemplo SSH Key CLI.
+
+Si eliges autenticación por navegador, la CLI te muestra un código de un solo uso. Lo copias, lo pegas en la web, autorizas los permisos y tu dispositivo queda enlazado.
+
+¿Cómo creo un repositorio con gh repo create?
+
+Con la sesión activa, gh repo create lanza un asistente interactivo que te pregunta uno a uno todos los datos del repositorio [05:10]:
+
+Crear desde cero, desde plantilla o subir uno local.
+Nombre y propietario del repositorio.
+Descripción y visibilidad (público o privado).
+Incluir README, gitignore y licencia.
+Clonar el repositorio recién creado a tu máquina.
+En segundos tienes el repo visible en tu perfil de GitHub, con el README desplegándose y el gitignore del lenguaje que elegiste, por ejemplo Terraform.
+
+¿Puedo crear un repo sin asistente?
+
+Sí. Si ya sabes qué quieres, pasas todos los parámetros en una sola línea:
+
+bash gh repo create mi-cuarto-repo --public --add-readme --description "repo desde CLI" --clone
+
+Este comando hace exactamente lo mismo que el asistente, pero sin preguntas. Es ideal para scripts, plantillas internas o flujos automatizados donde necesitas crear repositorios bajo demanda.
+
+¿Cuál opción es mejor: asistente o parámetros? El asistente es perfecto cuando estás explorando o creando repos esporádicos. Los parámetros directos brillan cuando automatizas o repites el mismo patrón muchas veces.
+
+¿Cómo gestiono issues desde la terminal?
+
+Dentro de cualquier repositorio, gh issue create abre un asistente para registrar un nuevo issue [09:20]. Te pide título, descripción opcional y luego ofrece cuatro caminos: crear, continuar en el navegador, agregar metadatos o cancelar.
+
+Al crearlo, la CLI te devuelve la URL directa al issue, lo que te ahorra buscarlo manualmente en la web.
+
+Para monitorear el estado de los issues tienes gh issue status, que organiza la información en tres bloques útiles:
+
+Issues asignados a ti.
+Issues donde te mencionan.
+Issues abiertos por ti.
+Esta misma lógica aplica a pull requests, actions y otros recursos del repositorio. Manejas tu trabajo en GitHub sin abrir el navegador ni una sola vez.
+
+¿Vale la pena automatizar con GitHub CLI?
+
+Los casos de uso son muchos. Imagina un script que cada día crea un repositorio para registrar tus actividades, o uno que clona automáticamente los proyectos nuevos del equipo para que arranques con todo listo.
+
+Un detalle práctico: en el botón verde de Code que usas para clonar repositorios, GitHub ya incluye una tercera pestaña con el comando listo de GitHub CLI. Lo copias, lo pegas y trabajas.
+
+La única desventaja real es la dependencia. Mientras más uses gh, más arraigo tendrás a GitHub. Git, en cambio, es universal y viaja contigo a cualquier plataforma. Si te mueves a otro proveedor, vuelves a Git puro sin fricción; si te quedas en GitHub, exprimir la CLI multiplica tu productividad.
+
+¿Ya pensaste qué tarea repetitiva podrías automatizar primero con gh? Cuéntalo en los comentarios.
+
+links :
+
+https://cli.github.com/
+https://cli.github.com/manual/gh
+
+
+
+
+
 
 
 
