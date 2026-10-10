@@ -1,0 +1,18 @@
+# comandos gh gestiona github desde tu terminal con gh 
+# resolver conlfictos en vs code (estudiar)
+
+# etiqueta git tag y checout sin romper tu proyecto @ok 
+# creacion y publicacion de sitios webs con githubpages 
+# confi de proyect soft con github 
+# automatizacion de github action para actualziar perfil 
+# plantillas de issue en github paso a paso 
+# uso de git hub en vscode 
+# gesion de seguridad de paquetes con dependabot en proyecto.net 
+
+# creacion de un portada de perfil en github comn markqown 
+# uso de git en vscode 
+
+
+
+
+

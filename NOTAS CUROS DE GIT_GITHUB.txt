@@ -2597,6 +2597,268 @@ https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a
 
 ----------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------
+# 38  Cómo resolver conflictos de merge en VS Code
+
+Trabajar con pull requests y ramas en Git es como un partido de ping pong: tú envías tu rama, alguien la revisa, se fusiona a main y el ciclo vuelve a empezar. Aquí verás cómo aprobar un pull request, crear una rama nueva, sincronizar cambios y resolver un conflicto real en Visual Studio Code, todo siguiendo una rutina diaria que te evita dolores de cabeza.
+
+¿Cómo revisar y aprobar un pull request en GitHub?
+
+Antes de escribir una sola línea de código, lo primero es revisar si hay pull requests pendientes del equipo. Es parte de la rutina sana de cualquier persona que colabora en un repositorio compartido.
+
+En el ejemplo, hay un pull request creado por Miguel que agrega métodos para los mejores superhéroes de Marvel. Al entrar a la sección de cambios, lo verde indica lo que añadió y lo rojo lo que removió o modificó. Tras confirmar que el archivo está completo y que la plantilla del pull request fue diligenciada correctamente, se aprueba y se hace merge a main [1:30].
+
+¿Qué hago después de aprobar un pull request? Eliminas la rama asociada. Si ya fue fusionada a main, esa rama dejó de tener propósito y mantenerla solo genera ruido en el repositorio.
+
+¿Por qué borrar la rama después del merge?
+
+Mantener ramas muertas confunde al equipo y ensucia la vista del repositorio. Una vez que el código vive en main, esa rama cumplió su función. Borrarla es responsabilidad compartida entre quien aprueba y quien creó el pull request.
+
+¿Cómo crear una rama nueva y hacer commit con Git?
+
+Con main limpio y actualizado, llega tu turno. En este caso, toca agregar un método llamado Courses Platzi que muestre cursos como Docker, Bash y Linux dentro del archivo app.py.
+
+El flujo desde la terminal es directo y siempre el mismo:
+
+git branch para confirmar en qué rama estás parado.
+git status para ver qué archivos fueron modificados.
+git add para agregar los cambios al staging.
+git commit -m "Platzi method added" para registrar el cambio con un mensaje claro.
+git push -u origin amin/tarea16 para subir la rama nueva al remoto [4:45].
+El flag -u en el push establece la rama remota como upstream, lo que te permite usar git push y git pull sin argumentos en los próximos comandos.
+
+¿Qué pasa si main tiene cambios nuevos antes de tu push?
+
+Aquí está el detalle que muchas personas pasan por alto. Si main recibió cambios mientras tú trabajabas en tu rama, lo ideal es traer esos cambios antes de subir los tuyos. De lo contrario, el conflicto se resolverá directamente en GitHub y eso suele ser más incómodo.
+
+La secuencia recomendada es: cambiar a main con git switch main, traer las actualizaciones con git pull, volver a tu rama con git switch amin/tarea16 y finalmente fusionar con git merge main.
+
+¿Cómo resolver un conflicto de merge en Visual Studio Code?
+
+Al correr git merge main, Git te avisa si hay conflictos. En este caso, ambos métodos —el de superhéroes de Marvel y el de cursos de Platzi— ocupan el mismo espacio en app.py y Git no sabe cuál conservar.
+
+Visual Studio Code ofrece la opción Resolve in Editor, que te muestra los dos bloques en conflicto lado a lado. Puedes elegir quedarte con uno, con otro o aceptar ambos cambios. En este escenario, lo correcto es aceptar el merge completo: ni quieres borrar el trabajo de Miguel ni perder el tuyo [7:20].
+
+¿Qué es un conflicto de merge? Es cuando dos ramas modifican la misma línea de un archivo y Git no puede decidir cuál versión conservar. Tú resuelves manualmente cuál bloque queda.
+
+Una vez resuelto, haces commit de la fusión. Desde VS Code puedes usar el botón Sync Changes, que ejecuta un pull y push en un solo paso.
+
+¿Cómo cierras el ciclo del pull request?
+
+Con los cambios ya en GitHub, creas un nuevo pull request desde tu rama hacia main. Es importante revisar que el destino del merge sea el correcto: en este caso, main recibiendo los cambios de amin/tarea16.
+
+Cuando Miguel aprueba y hace merge, el estado del pull request cambia a merged y él borra tu rama, devolviendo el favor. El archivo app.py en main ahora contiene tanto los superhéroes de Marvel como los cursos de Platzi.
+
+¿Cuál es la rutina ideal para evitar conflictos en Git?
+
+La práctica vuelve este flujo casi automático. Al principio se siente burocrático, pero con el tiempo te das cuenta de que sigues una secuencia limpia que protege el trabajo de todo el equipo.
+
+La rutina diaria recomendada tiene tres pasos:
+
+Revisa los pull requests pendientes del equipo y apruébalos si están listos.
+Trae todos los cambios a tu rama main local con git pull.
+Crea una rama separada para tu nueva tarea y trabaja ahí.
+Siguiendo esta secuencia, es casi imposible toparte con un conflicto como el que se generó intencionalmente en el ejercicio. Y si llegara a ocurrir, ya tienes las herramientas para resolverlo sin pánico.
+
+¿Qué parte del flujo te genera más dudas, el merge desde la terminal o la resolución de conflictos en VS Code? Cuéntalo en los comentarios.
+
+
+links 
+
+https://git-scm.com/docs/git-merge
+https://git-scm.com/docs/git-rebase
+
+------------------------------------------------------
+--------------------------------------------------------
+
+# 39 Estrategias de Fusión de Ramas en Git
+
+Las diferentes estrategias de fusión de ramas
+
+Ahora que hemos estado trabajando de manera más activa con ramas y con Pull Requests para poder procesar la información, lo ideal es que puedas integrar tus cambios y tus ramas de manera normal, sin embargo, cuando las cosas suceden de manera diferente. Puede suceder que un conflicto aparezca y cuando eso sucede por primera vez en un repositorio puede suceder que git te permita seleccionar la estrategia adecuada, una estrategia que quizá puede ser confusa si no estamos listos para ello.
+
+buscar imagen clase 39 de git 
+
+En la imagen puedes ver que git está ofreciéndote tres opciones para poder hacer la fusión entre las ramas, estas tres opciones son:
+
+git config pull.rebase false: Esta estrategia es la que git utilizará por defecto, la que git sugiere siempre, se encargará de fusionar la rama local y la remota, lo ideal es usarla para mantener el historial de cambios y francamente la más sencilla.
+
+git config pull.rebase true: Esta opción hará que Git intente hacer un rebase que es exactamente como suena, la rama remota va a rebasar a las locales sobreescribiendo sus cambios haciendo que si la rama local quiere subir sus cambios entonces deberá hacerlos de nuevo, con una buena constancia de cambios esta estrategia es la más práctica.
+
+git config pull.ff only: Esta opción se refiere a un fast-forward, esto ocurre cuando la rama local está por detrás en los cambios de la rama remota y los commits de esta última rama pueden aplicarse sin crear un commit de fusión. Demasiado complicado ¿no? En otras palabras, se trata de poner los cambios de la rama local por encima de los de la remota, lo que no es la mejor idea porque podría afectar los cambios de otros miembros del equipo.
+
+Como puedes ver, cada estrategia es diferente y se adapta perfectamente a diferentes escenarios. ¿Quieres un tip final? Si tu equipo no tiene una política acerca de esto, lo ideal es que consideren usar la mecánica por defecto para así adaptarse a lo que ya sabrán que va a suceder en todos los casos.
+
+
+----------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
+GIT HUB RELEASES
+
+#40  Creación de Releases en Github para Desarrolladores de Software
+
+¿Qué son los GitHub Releases y por qué son importantes?
+
+Para todo desarrollador de software, GitHub Releases son una herramienta fundamental no solo para el uso diario, sino también para entender cómo funcionan los proyectos en los que trabajamos. Los releases en GitHub permiten empaquetar y gestionar distintas versiones del software, facilitando así el acceso y la implementación de las nuevas funcionalidades o correcciones de errores.
+
+¿Cómo se exploran los repositorios populares y sus releases?
+
+Uno de los ejemplos más comunes es el paquete express en npm, con 24 millones de descargas semanales. Explorar un repositorio popular como el de express en GitHub nos permite ver cómo se estructura y gestiona este tipo de proyectos. Al ingresar a la parte de Releases, podemos visualizar todas las versiones lanzadas, entender su evolución, y ver cuáles son las más estables.
+
+Algo similar sucede con Flask, un framework muy utilizado para construir aplicaciones web en Python. Este repositorio también permite explorar sus 14 lanzamientos, brindando una vista clara de su línea de tiempo de desarrollo y las versiones más estables, como la 3.1.
+
+¿Cómo se crea un repositorio para un nuevo release en GitHub?
+
+Para comenzar a crear un release, es importante tener un repositorio. El proceso es sencillo:
+
+Crear un nuevo repositorio: Debe ser público para compartir las versiones con la comunidad.
+Añadir un README: Para proporcionar información básica sobre el proyecto.
+Clonar el repositorio: Usando la terminal y el comando gh repo clone <nombre-repo>.
+¿Cómo se configura un setup.py?
+
+El archivo setup.py es esencial para crear cualquier paquete en Python. Es el archivo que contiene la configuración y metadatos del paquete. Aquí te mostramos cómo configurarlo:
+
+from setuptools import setup, find_packages
+
+setup(
+    name='tercer_repo',
+    version='0.1',
+    packages=find_packages(),
+    author='Tu Nombre',
+    author_email='tu.correo@ejemplo.com',
+    url='https://github.com/TuUsuario/tercer_repo',
+)
+
+
+Asegúrate de actualizar la información del autor y la URL con tus datos personales y de tu repositorio.
+
+¿Por qué es crucial la consistencia de nombres en el proyecto?
+
+Es importante mantener la coherencia en el nombre del paquete y el repositorio para evitar confusiones. Si el repositorio se llama tercer_repo, el paquete debería seguir la misma nomenclatura.
+
+¿Cómo se crean los archivos necesarios para el paquete pip?
+
+Una vez creado y configurado el archivo setup.py, necesitas crear una carpeta con el mismo nombre del paquete. Dentro de esta carpeta, un archivo __init__.py que contiene el código principal del paquete:
+
+
+def saludar(nombre):
+    return f"Hola, {nombre}. Este es mi primer paquete pip."
+
+
+    ¿Qué pasos seguir para compilar el paquete?
+
+Para compilar el paquete y prepararlo para su distribucion:
+
+Ejecuta el comando: python3 setup.py bdist_wheel sdist.
+Observa los archivos creados: Los archivos compilados .whl y comprimidos .tar.gz aparecerán en directorios específicos como dist y build.
+¿Cómo hacer un commit y push del paquete a GitHub?
+
+Al asegurar que todos los archivos están listos:
+
+Haz un commit: git commit -m "Lanzamiento del primer paquete".
+Sube los cambios: Con git push, envía el código nuevo a GitHub.
+¿Qué consideraciones tener con el archivo .gitignore?
+
+El archivo .gitignore podría prevenir la subida de archivos importantes. Asegúrate de no incluir archivos críticos como los compilados y scripts de configuraciones esenciales.
+
+¿Cuál es el siguiente paso después de tener todo listo?
+
+Con el setup preparado, el siguiente paso es crear el release en GitHub y hacer que esté disponible para que otros desarrolladores lo utilicen. Esta es la culminación de una parte crucial del ciclo de vida del software, permitiendo compartir y colaborar eficientemente.
+
+links 
+
+https://www.npmjs.com/package/express
+
+https://pypi.org/project/Flask-API/
+
+https://github.com/flask-api/flask-api
+
+https://docs.github.com/es/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+
+https://github.com/flask-api/flask-api
+
+https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+
+
+---------------------------------------------------
+-----------------------------------------------------
+
+# 41  Instala tu paquete pip desde GitHub
+
+Publicar un release en GitHub te permite versionar tu código y distribuirlo como paquete instalable. Aquí verás cómo crear un release con tag, adjuntar binarios y consumir ese paquete pip desde una aplicación Python local, ideal si estás aprendiendo a empaquetar y distribuir software propio.
+
+¿Cómo se crea un nuevo release en GitHub?
+
+Dentro de tu repositorio, busca la sección Releases a la derecha y selecciona la opción para crear uno nuevo. El formulario te pedirá un tag, que es la versión que quieras publicar.
+
+En este caso usamos v0.1.0, tomando como base la rama main. Si no recuerdas qué versión declaraste en tu proyecto, vuelve a Visual Studio Code y revisa la versión configurada ahí mismo. Mantener coherencia entre la versión del proyecto y el tag del release evita confusiones futuras [01:00].
+
+¿Qué es un tag en GitHub? Es una etiqueta que marca un punto específico del historial del repositorio, normalmente asociado a una versión como v0.1.0. Sirve como referencia inmutable para tus releases.
+
+En el campo release title se acostumbra reutilizar el mismo tag como título, así que escribe v0.1.0. La descripción puede quedar vacía si es tu primera prueba.
+
+¿Debo subir binarios o solo el código fuente?
+
+Si no te sientes seguro publicando solamente el código fuente, GitHub te permite adjuntar binarios. Dentro de tu proyecto, los binarios viven en la carpeta dist y suelen tener dos formatos:
+
+Archivo .tar.gz, una distribución comprimida del código fuente.
+Archivo .whl, el formato wheel recomendado para instalar con pip.
+Selecciónalos, ábrelos y quedarán adjuntos al release. Si esta es tu primera versión estable, no marques pre-release y publica directamente con el botón correspondiente [02:15].
+
+¿Cómo consumir tu paquete pip desde otra aplicación Python?
+
+Una vez publicado el release, cambia de lugar de trabajo y abre otro repositorio donde vivirá la aplicación que consumirá el paquete. Desde la terminal escribe code . para abrir Visual Studio Code en esa carpeta.
+
+Dentro del repositorio crea una carpeta llamada app y, dentro de ella, un archivo app.py. Esa será tu aplicación cliente.
+
+¿Cómo instalo un paquete pip desde una URL de GitHub?
+
+Ve a tu release publicado, haz clic derecho sobre el archivo .whl y copia el enlace. En la terminal ejecuta:
+
+bash pip3 install <URL-del-archivo-whl>
+
+Eso descargará e instalará tu paquete directamente desde GitHub, sin necesidad de subirlo a PyPI todavía. Para verificar que quedó instalado, usa:
+
+bash pip3 list
+
+El comando muestra en orden alfabético todos los paquetes disponibles en tu entorno. Ahí debería aparecer tu paquete con la versión 0.1.0 [03:40].
+
+¿Para qué sirve pip3 list? Lista todos los paquetes instalados en tu entorno Python con sus versiones. Es la forma rápida de confirmar que una instalación se completó correctamente.
+
+¿Cómo importo y uso el paquete en mi código?
+
+En app.py importa el módulo y usa la función que expusiste en tu paquete. Si tu paquete se llama tercer_repo y contiene un método saludo, el código queda así:
+
+python from tercer_repo import saludo
+
+print(saludo("Platzi"))
+
+Desde la terminal entra a la carpeta con cd app y ejecuta python3 app.py. La salida será el mensaje definido en tu paquete, por ejemplo: Hola, Platzi, desde el repo de Platzi [04:50].
+
+Acabas de cerrar el ciclo: creaste un paquete, lo publicaste como release en GitHub y lo consumiste desde una aplicación independiente. Ese mismo flujo aplica si trabajas con NuGet en .NET o con NPM en Node, solo cambian las herramientas de empaquetado y los comandos de instalación.
+
+¿Qué habilidades y conceptos clave dominas tras este flujo?
+
+Este ejercicio te deja varias capacidades concretas listas para reutilizar en otros proyectos.
+
+Versionado semántico con tags tipo v0.1.0 para marcar puntos del historial.
+Publicación de releases en GitHub con binarios .whl y .tar.gz.
+Instalación de paquetes pip desde URLs externas, sin depender de PyPI.
+Verificación de entornos Python con pip3 list.
+Importación y consumo de tu propio paquete en una aplicación cliente.
+Si ya creaste paquetes pip, npm o NuGet siguiendo este patrón, compártelos en los comentarios para que la comunidad pueda probarlos. ¿Qué función incluirías en la primera versión de tu paquete?
+
+
+links 
+
+https://docs.github.com/es/repositories/releasing-projects-on-github/managing-releases-in-a-repository
+
+
+-------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+
+
+
+
+
 
 
 
